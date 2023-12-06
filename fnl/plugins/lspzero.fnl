@@ -4,15 +4,6 @@
                                 :package_uninstalled "✗"}}
                    :max_concurrent_installers 10})
 
-;(local keys {1 :<leader>L 2 :<CMD>LspInfo<CR> :mode :n :desc :LspInfo})
-;  (noremap :n :gd "<Cmd>lua vim.lsp.buf.definition()<CR>" :Definition) ; (noremap :i :<C-a> "<Cmd>lua vim.lsp.buf.code_action()<CR>" :Action)
-;  (llmap :n :l "<Cmd>lua vim.lsp.buf.document_highlight()<CR>" :Highlights)
-;  (llmap :n :j "<cmd>lua vim.diagnostic.goto_next()<CR>" "Next Diag")
-;  (llmap :n :k "<cmd>lua vim.diagnostic.goto_prev()<CR>" "Prev Diag")
-;telescope
-;  (llmap :n :r ":lua require('telescope.builtin').lsp_references()<cr>"        "Telescope References")
-;  (llmap :n :i ":lua require('telescope.builtin').lsp_implementations()<cr>"        "Telescope Implementations"))
-
 [{1 :VonHeikemen/lsp-zero.nvim
   :branch :v3.x
   :lazy true

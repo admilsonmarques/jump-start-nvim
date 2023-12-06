@@ -20,16 +20,3 @@ So, after watching ThePrimogen video 0 to [LSP: Neovim RC From Scratch](https://
 - https://github.com/Olical/nfnl
 - https://github.com/Olical/aniseed
 
-## TODOs
-
-- [x] Migrate formatters to Guard
-- [x] Organize lsp related keybindings
-- [x] Metals
-- [ ] Gitsigns
-- [ ] NvimTree
-- [ ] Open on Git
-- [ ] Bufferline
-- [x] UFO
-- [ ] Telekasten and Neorg
-- [ ] Rearrange Language related plugins into a single file/folder
-- [ ] Die organizing whichkey or check alternatives
