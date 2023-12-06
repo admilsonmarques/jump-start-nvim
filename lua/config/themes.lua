@@ -1,0 +1,1 @@
+/Users/admilson.marques/dev/ade/jump-start-nvim/fnl/config/themes.lua
