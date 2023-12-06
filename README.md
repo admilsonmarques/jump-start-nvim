@@ -8,6 +8,8 @@ During the use of my lazy-nvim configuration I've started having a lot of issues
 
 So, after watching ThePrimogen video 0 to [LSP: Neovim RC From Scratch](https://www.youtube.com/watch?v=w7i4amO_zaE), I've decided to create a Jump Start configuration as he demonstrated on his video, adding a few tweeks I've grew fond of.
 
+
+
 ## Plugins Used
 
 ## Alternatives and other repos to check
@@ -20,3 +22,6 @@ So, after watching ThePrimogen video 0 to [LSP: Neovim RC From Scratch](https://
 - https://github.com/Olical/nfnl
 - https://github.com/Olical/aniseed
 
+## TODO 
+- Find comment string alternative
+- Describe how to use and plugins
