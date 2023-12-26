@@ -58,7 +58,7 @@
              :disabled_buftypes [:nvim-tree]
              :separator separators})
 
-(local branch {1 "b:gitsigns_head"
+(local branch {1 "branch"
                :icon (.. " " (core.get icons.git :Branch))
                :disabled_buftypes [:nvim-tree]
                :color {:gui :bold}

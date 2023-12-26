@@ -10,7 +10,7 @@
                           :z false
                           :g false}})
 
-(local keys [{1 :<leader>q 2 :<CMD>q<CR> :mode :n :desc "Quit tab"}])
+(local keys [{1 :<leader>q 2 :<CMD>bd<CR> :mode :n :desc "Quit tab"}])
 
 
 (local leader-mappings {:d {:name :Diagnostic}

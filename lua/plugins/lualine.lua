@@ -27,7 +27,7 @@ local right_separator = core.get(icons.ui, "CircleDividerRight")
 local separators = {left = left_separator, right = right_separator}
 local mode = {"mode", separator = {left = left_separator}, right_padding = 0}
 local diff = {"diff", symbols = {added = core["get-in"](icons.all, {"git", "LineAdded"}), modified = core["get-in"](icons.all, {"git", "LineModified"}), removed = core["get-in"](icons.all, {"git", "LineRemoved"})}, colored = true, disabled_buftypes = {"nvim-tree"}, separator = separators}
-local branch = {"b:gitsigns_head", icon = (" " .. core.get(icons.git, "Branch")), disabled_buftypes = {"nvim-tree"}, color = {gui = "bold"}, right_padding = 1, separator = separators}
+local branch = {"branch", icon = (" " .. core.get(icons.git, "Branch")), disabled_buftypes = {"nvim-tree"}, color = {gui = "bold"}, right_padding = 1, separator = separators}
 local filename = {"filename", icon_only = true, disabled_buftypes = {"nvim-tree"}, colored = true, separator = separators}
 local filetype = {"filetype", icon_only = true, disabled_buftypes = {"nvim-tree"}, colored = true, separator = separators}
 local language_server = {active_clients(), disabled_buftypes = {"nvim-tree"}, separator = separators}

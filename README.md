@@ -23,5 +23,4 @@ So, after watching ThePrimogen video 0 to [LSP: Neovim RC From Scratch](https://
 - https://github.com/Olical/aniseed
 
 ## TODO 
-- Find comment string alternative
 - Describe how to use and plugins
