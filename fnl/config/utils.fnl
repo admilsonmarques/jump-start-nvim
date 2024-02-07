@@ -2,6 +2,7 @@
 (local fun (autoload :config.fun))
 (local core (autoload :nfnl.core))
 (local vim vim)
+
 (fn +docs [opts to]
   (core.update opts :desc (fn [desc] (or desc to))))
 

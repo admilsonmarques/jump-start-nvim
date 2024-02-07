@@ -1,5 +1,5 @@
 -- [nfnl] Compiled from fnl/plugins/whichkey.fnl by https://github.com/Olical/nfnl, do not edit.
-local plugins = {spelling = {enabled = true, suggestions = 20}, presets = {nav = false, motions = false, operators = false, text_objects = false, g = false, z = false}, marks = false, registers = false}
+local plugins = {spelling = {enabled = true, suggestions = 20}, presets = {text_objects = true, z = true, g = false, operators = false, motions = false, nav = false}, registers = false, marks = false}
 local keys = {{"<leader>q", "<CMD>bd<CR>", mode = "n", desc = "Quit tab"}}
 local leader_mappings = {d = {name = "Diagnostic"}, f = {name = "Find"}, g = {name = "Git"}, h = {name = "Harpoon"}, r = {name = "Replace"}, T = {name = "Themes"}, t = {name = "Telekasten"}, x = {name = "Settings"}, z = {name = "Folds"}}
 local local_leader_mappings = {r = {name = "Request"}}

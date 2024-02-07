@@ -5,9 +5,9 @@
                 :spelling {:enabled true :suggestions 20}
                 :presets {:operators false
                           :motions false
-                          :text_objects false
+                          :text_objects true
                           :nav false
-                          :z false
+                          :z true
                           :g false}})
 
 (local keys [{1 :<leader>q 2 :<CMD>bd<CR> :mode :n :desc "Quit tab"}])

@@ -15,4 +15,4 @@ local function _3_()
   bindings()
   return ufo.setup(opts)
 end
-return {{"kevinhwang91/nvim-ufo", dependencies = {"kevinhwang91/promise-async"}, config = _3_}}
+return {{"kevinhwang91/nvim-ufo", dependencies = {"kevinhwang91/promise-async"}, config = _3_, lazy = false}}

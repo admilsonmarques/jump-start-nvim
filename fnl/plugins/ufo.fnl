@@ -18,6 +18,7 @@
 
 [{1 :kevinhwang91/nvim-ufo
   :dependencies [:kevinhwang91/promise-async]
+  :lazy false
   :config (fn []
             (let [ufo (require :ufo)]
               (bindings)

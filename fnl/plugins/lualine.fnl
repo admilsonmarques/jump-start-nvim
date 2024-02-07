@@ -2,7 +2,7 @@
 (local core (autoload :nfnl.core))
 
 (local icons (autoload :config.icons))
-(local colors (autoload :config.colors))
+
 
 (local disable [:neogitstatus
                 :netrw
