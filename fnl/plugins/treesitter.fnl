@@ -20,4 +20,5 @@
             (let [treesitter (require :nvim-treesitter.configs)]
               (treesitter.setup opts))) }
    {1 :nvim-treesitter/playground }
-   {1 :nvim-treesitter/nvim-treesitter-context}]
+   {1 :nvim-treesitter/nvim-treesitter-context}
+   ]
