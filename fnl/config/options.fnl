@@ -39,7 +39,7 @@
                 ;more space in the neovim command line for displaying messages
                 :cmdheight 2
                 ;so that `` is visible in markdown files
-                :conceallevel 0
+                :conceallevel 1
                 ;the encoding written to a file
                 :fileencoding :utf-8
                 ;highlight all matches on previous search pattern

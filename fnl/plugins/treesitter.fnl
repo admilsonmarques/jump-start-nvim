@@ -1,6 +1,6 @@
 (local ensure_installed 
 ;; A list of parser names, or "all"
-       ["vimdoc" "javascript" "typescript" "c" "lua" "rust" "scala" "clojure" "norg"])
+       ["vimdoc" "javascript" "typescript" "c" "lua" "rust" "scala" "clojure" "norg" "markdown" "markdown_inline"])
 (local opts {
        : ensure_installed
        :sync_install false
