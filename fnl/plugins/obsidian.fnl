@@ -10,7 +10,9 @@
              :notes_subdir :notes/general
              :daily_notes {:folder :notes/dailies
                            :date_format "%Y-%m-%d"
-                           :template :templates}
+                           :template :daily.md}
+                           :templates {:subdir :templates
+                           :date_format "%Y-%m-%d"}
              :completion {:nvim_cpm true
                           :min_chars 2
                           :new_notes_location :current_dir
