@@ -36,7 +36,7 @@
                                                     {:desc :Rename
                                                      :buffer bufnr})
                                     (vim.keymap.set :n :<localleader>D
-                                                   "<cmd>lua vim.diagnostic.open_float()<cr>"
+                                                    "<cmd>lua vim.diagnostic.open_float()<cr>"
                                                     {:desc "Float Diagnostic"
                                                      :buffer bufnr})
                                     (vim.keymap.set :n :<localleader>d
@@ -86,8 +86,11 @@
                                                              (let [lspconfig (require :lspconfig)]
                                                                (lspconfig.tsserver.setup {})))}})))}
  {1 :williamboman/mason-lspconfig.nvim}
-
  ;; Autocompletion
+ {1 :zbirenbaum/copilot-cmp
+  :config (fn []
+            (let [copilot (require :copilot_cmp)]
+              (copilot.setup {})))}
  {1 :hrsh7th/nvim-cmp
   :event :InsertEnter
   :dependencies [:L3MON4D3/LuaSnip
@@ -96,6 +99,7 @@
                  :saadparwaiz1/cmp_luasnip
                  :hrsh7th/cmp-nvim-lsp
                  :hrsh7th/cmp-nvim-lua
+                 :zbirenbaum/copilot-cmp
                  :rafamadriz/friendly-snippets]
   :config (fn [] ; Here is where you configure the autocompletion settings
             (let [lsp_zero (require :lsp-zero)

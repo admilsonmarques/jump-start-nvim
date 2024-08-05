@@ -66,7 +66,11 @@
                :separator separators})
 
 (local filename {1 :filename
-                 :icon_only true
+                 :file_status true
+                 :newfile_status true
+                 :path 1
+                 :symbols {:modified :🌕
+                           :readonly :🔒}
                  :disabled_buftypes [:nvim-tree]
                  :colored true
                  :separator separators})
@@ -105,7 +109,7 @@
                        :disabled_filetypes disable
                        :ignore_focus ignore
                        :always_divide_middle true
-                       :globalstatus true}
+                       :globalstatus false}
              : sections
              :inactive_sections sections
              :extensions []})

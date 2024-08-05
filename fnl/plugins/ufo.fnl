@@ -9,7 +9,7 @@
 
 (local opts {:provider_selector (fn [_ _ _]
                                   [:treesitter :indent])
-             :close_fold_kinds [:import :comments]
+             :close_fold_kinds_for_ft [:import :comments]
              :preview {:win_config {:border ["" "-" "" "" "" "-" "" ""]
                                     :winhighlight "Normal:Folded"
                                     :winblend 0}}

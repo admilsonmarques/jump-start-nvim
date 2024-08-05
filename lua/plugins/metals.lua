@@ -4,7 +4,7 @@ local autocmd = _local_1_["autocmd"]
 local augroup = _local_1_["augroup"]
 local llmap = _local_1_["llmap"]
 local function status_handler(err, status, ctx)
-  local text = (status.text):gsub("[\226\160\135\226\160\139\226\160\153\226\160\184\226\160\180\226\160\166]", ""):gsub("^%s*(.-)%s*$", "%1")
+  local text = status.text:gsub("[\226\160\135\226\160\139\226\160\153\226\160\184\226\160\180\226\160\166]", ""):gsub("^%s*(.-)%s*$", "%1")
   local msg_val
   if status.hide then
     msg_val = {kind = "end"}
@@ -31,10 +31,10 @@ local function _4_()
   local metals = require("metals")
   local metals_config = metals.bare_config()
   local nvim_metals_group = augroup("nvim-metals", {clear = true})
-  do end (metals_config)["handlers"] = {["metals/status"] = status_handler}
+  metals_config["handlers"] = {["metals/status"] = status_handler}
   metals_config.init_options["statusBarProvider"] = "on"
   metals_config["settings"] = {showImplicitArguments = true, showImplicitConversionsAndClasses = true, showInferredType = true, serverVersion = "latest.snapshot", scalafixRulesDependencies = {"com.github.liancheng/scalafix-rules-dotty:0.1.6"}, serverProperties = {"-XX:+UseStringDeduplication", "-XX:MaxInlineLevel=20", "-XX:+UseParallelGC", "-Xmx10G", "-Xms2G"}, enableSemanticHighlighting = false}
-  do end (require("cmp_nvim_lsp")).default_capabilities()
+  require("cmp_nvim_lsp").default_capabilities()
   local function _5_(client, bufnr)
     return metals.setup_dap()
   end

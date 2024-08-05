@@ -2,7 +2,7 @@
 local opts = {}
 local function _1_()
   local commentstring = require("ts_context_commentstring")
-  do end (vim.g)["skip_ts_context_commentstring_module"] = true
+  vim.g["skip_ts_context_commentstring_module"] = true
   return commentstring.setup({enable_autocmd = false})
 end
 local function _2_()

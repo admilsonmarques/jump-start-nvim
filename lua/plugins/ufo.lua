@@ -9,7 +9,7 @@ local opts
 local function _2_(_, _0, _1)
   return {"treesitter", "indent"}
 end
-opts = {provider_selector = _2_, close_fold_kinds = {"import", "comments"}, preview = {win_config = {border = {"", "-", "", "", "", "-", "", ""}, winhighlight = "Normal:Folded", winblend = 0}}, enable_get_fold_virt_text = true}
+opts = {provider_selector = _2_, close_fold_kinds_for_ft = {"import", "comments"}, preview = {win_config = {border = {"", "-", "", "", "", "-", "", ""}, winhighlight = "Normal:Folded", winblend = 0}}, enable_get_fold_virt_text = true}
 local function _3_()
   local ufo = require("ufo")
   bindings()

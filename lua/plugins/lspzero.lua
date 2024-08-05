@@ -56,10 +56,14 @@ local function _3_()
   return mason_lspconfig.setup({ensure_installed = {"clojure_lsp", "tsserver", "fennel_language_server", "lua_ls", "jqls", "yamlls", "pyright"}, handlers = {lsp_zero.default_setup(), lua_ls = _5_, fennel_language_server = _6_, clojure_lsp = _7_, jqls = _8_, yamlls = _9_, pyright = _10_, tsserver = _11_}})
 end
 local function _12_()
+  local copilot = require("copilot_cmp")
+  return copilot.setup({})
+end
+local function _13_()
   local lsp_zero = require("lsp-zero")
   local cmp = require("cmp")
   local cmp_action = lsp_zero.cmp_action()
   lsp_zero.extend_cmp()
   return cmp.setup({formating = lsp_zero.cmp_format(), mapping = cmp.mapping.preset.insert({["<C-SPACE>"] = cmp.mapping.complete(), ["<C-i>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Insert, select = true}), ["<C-u>"] = cmp.mapping.scroll_docs(-4), ["<C-d>"] = cmp.mapping.scroll_docs(4), ["<C-f>"] = cmp_action.luasnip_jump_forward(), ["<C-b>"] = cmp_action.luasnip_jump_backward()})})
 end
-return {{"VonHeikemen/lsp-zero.nvim", branch = "v3.x", lazy = true, init = _1_, config = false}, {"williamboman/mason.nvim", config = _2_, lazy = false}, {"neovim/nvim-lspconfig", cmd = {"LspInfo", "LspInstall", "LspStart"}, event = {"BufReadPre", "BufNewFile"}, dependencies = {"hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim"}, config = _3_}, {"williamboman/mason-lspconfig.nvim"}, {"hrsh7th/nvim-cmp", event = "InsertEnter", dependencies = {"L3MON4D3/LuaSnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua", "rafamadriz/friendly-snippets"}, config = _12_}}
+return {{"VonHeikemen/lsp-zero.nvim", branch = "v3.x", lazy = true, init = _1_, config = false}, {"williamboman/mason.nvim", config = _2_, lazy = false}, {"neovim/nvim-lspconfig", cmd = {"LspInfo", "LspInstall", "LspStart"}, event = {"BufReadPre", "BufNewFile"}, dependencies = {"hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim"}, config = _3_}, {"williamboman/mason-lspconfig.nvim"}, {"zbirenbaum/copilot-cmp", config = _12_}, {"hrsh7th/nvim-cmp", event = "InsertEnter", dependencies = {"L3MON4D3/LuaSnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua", "zbirenbaum/copilot-cmp", "rafamadriz/friendly-snippets"}, config = _13_}}

@@ -75,27 +75,26 @@ local function autocmd(cmd, table)
   return vim.api.nvim_create_autocmd(cmd, table)
 end
 local function fmt_autocmd(_8_)
-  local _arg_9_ = _8_
-  local language = _arg_9_["language"]
-  local pattern = _arg_9_["pattern"]
-  local cmd = _arg_9_["cmd"]
+  local language = _8_["language"]
+  local pattern = _8_["pattern"]
+  local cmd = _8_["cmd"]
   local group = augroup((language .. "_formatter"), {clear = true})
   return autocmd("BufWritePost", {pattern = pattern, group = group, desc = ("Auto-format " .. language .. " files before saving"), callback = vim.cmd(("!" .. cmd .. " " .. vim.api.nvim_buf_get_name(0)))})
 end
 local function has(plugin)
-  return (((require("lazy.core.config")).plugins)[plugin] ~= nil)
+  return (require("lazy.core.config").plugins[plugin] ~= nil)
 end
 local function on_very_lazy(_function)
-  local function _10_()
+  local function _9_()
     return _function()
   end
-  return autocmd("User", {pattern = "VeryLazy", callback = _10_})
+  return autocmd("User", {pattern = "VeryLazy", callback = _9_})
 end
 local function on_attach(on_attach0)
-  local function _11_()
+  local function _10_()
     return on_attach0()
   end
-  return autocmd("LspAttach", {callback = _11_})
+  return autocmd("LspAttach", {callback = _10_})
 end
 local function setup(plugin, config)
   local plugin0 = require(plugin)

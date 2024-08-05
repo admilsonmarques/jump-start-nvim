@@ -12,14 +12,11 @@ local header2 = {type = "group", val = {{type = "terminal", command = "cat | pok
 local function quick_btn(theme)
   return {type = "group", val = {{type = "text", val = "quick links", opts = {hl = hl1, position = "center"}}, {type = "padding", val = 0}, theme.button("e", (core.get(icons.ui, "NewFile") .. "  new file"), "<cmd>ene!<cr>"), theme.button("f", (core.get(icons.ui, "FindFile") .. "  find file"), "<cmd>Telescope find_files<cr>"), theme.button("p", (core.get(icons.ui, "Project") .. "  projects"), "<cmd>Telescope projects<cr>"), theme.button("r", (core.get(icons.ui, "History") .. "  recent files"), "<cmd>Telescope oldfiles<cr>"), theme.button("t", (core.get(icons.ui, "FindText") .. "  find text"), "<cmd>Telescope live_grep<cr>"), theme.button("c", (core.get(icons.ui, "Gear") .. "  configuration"), "<cmd>edit ~/.config/jump-start-nvim/fnl/init.fnl<cr>")}, opts = {hl = hl2, position = "center"}}
 end
-local function note_btn(theme)
-  return {type = "group", val = {{type = "text", val = "Note Taking", opts = {hl = hl1, position = "center"}}, {type = "padding", val = 0}, theme.button("w", (core.get(icons.ui, "TWeekly") .. "  Select Workspace"), "<CMD>ObsidianWorkspace<CR>"), theme.button("n", (core.get(icons.ui, "TNote") .. "  New note"), "<CMD>ObsidianNew<CR>"), theme.button("d", (core.get(icons.ui, "TDaily") .. "  Daily note"), "<CMD>ObsidianToday<CR>"), theme.button("s", (core.get(icons.ui, "Search") .. "  Search notes"), "<CMD>ObsidianSearch<CR>")}, opts = {hl = hl2, position = "center"}}
-end
 local function fortune_footer(fortune)
   return {type = "text", val = fortune, opts = {hl = "Statement", position = "center"}}
 end
 local function definitions(theme, fortune)
-  return {layout = {{type = "padding", val = 3}, header, {type = "padding", val = 1}, quick_btn(theme), {type = "padding", val = 2}, note_btn(theme), {type = "padding", val = 2}, fortune_footer(fortune), {type = "padding", val = 1}}, opts = {redraw_on_resize = true, noautocmd = false}}
+  return {layout = {{type = "padding", val = 3}, header, {type = "padding", val = 1}, quick_btn(theme), {type = "padding", val = 2}, fortune_footer(fortune), {type = "padding", val = 1}}, opts = {redraw_on_resize = true, noautocmd = false}}
 end
 local keys = {{"<leader>;", "<CMD>Alpha<CR>", mode = "n", desc = "Home"}}
 local function _2_()

@@ -15,7 +15,7 @@ local renderer_icons = {webdev_colors = true, show = {git = true, folder = true,
 local renderer = {indent_markers = renderer_indent_markers, icons = renderer_icons, highlight_git = true, root_folder_modifier = ":t", group_empty = false}
 local filters = {custom = {"node_modules", "\\.cache"}, exclude = {}, dotfiles = false}
 local trash = {cmd = "trash", require_confirm = true}
-local log = {types = {diagnostics = false, git = false, profile = false, copy_paste = false, all = false, config = false}, enable = false, truncate = false}
+local log = {types = {all = false, config = false, copy_paste = false, diagnostics = false, git = false, profile = false}, enable = false, truncate = false}
 local actions_window_picker = {enable = true, chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", exclude = {filetype = {"notify", "packer", "qf", "diff", "fugitive", "fugitiveblame"}, buftype = {"nofile", "terminal", "help"}}}
 local actions = {use_system_clipboard = true, change_dir = {enable = true, global = true, restrict_above_cwd = false}, open_file = {quit_on_open = true, window_picker = actions_window_picker, resize_window = false}}
 local opts = {auto_reload_on_write = true, hijack_directories = {enable = true}, sync_root_with_cwd = true, reload_on_bufenter = true, respect_buf_cwd = true, update_cwd = true, diagnostics = diagnostics, update_focused_file = update_focused_file, system_open = system_open, git = git, view = view, renderer = renderer, filters = filters, trash = trash, log = log, actions = actions}

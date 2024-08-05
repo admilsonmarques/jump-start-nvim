@@ -52,20 +52,6 @@
                        "<cmd>edit ~/.config/jump-start-nvim/fnl/init.fnl<cr>")]
    :opts {:hl hl2 :position :center}})
 
-(fn note_btn [theme]
-  {:type :group
-   :val [{:type :text :val "Note Taking" :opts {:hl hl1 :position :center}}
-         {:type :padding :val 0}
-         (theme.button :w
-                       (.. (core.get icons.ui :TWeekly) "  Select Workspace")
-                       :<CMD>ObsidianWorkspace<CR>)
-         (theme.button :n (.. (core.get icons.ui :TNote) "  New note")
-                       :<CMD>ObsidianNew<CR>)
-         (theme.button :d (.. (core.get icons.ui :TDaily) "  Daily note")
-                       :<CMD>ObsidianToday<CR>)
-         (theme.button :s (.. (core.get icons.ui :Search) "  Search notes")
-                       :<CMD>ObsidianSearch<CR>)]
-   :opts {:hl hl2 :position :center}})
 
 (fn fortune_footer [fortune]
   {:type :text :val fortune :opts {:hl :Statement :position :center}})
@@ -75,8 +61,6 @@
             header
             {:type :padding :val 1}
             (quick_btn theme)
-            {:type :padding :val 2}
-            (note_btn theme)
             {:type :padding :val 2}
             (fortune_footer fortune)
             {:type :padding :val 1}]

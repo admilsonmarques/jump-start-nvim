@@ -27,9 +27,16 @@
              :custom_dynamic_variables {}
              :yank_dry_run true})
 
-[{1 :rest-nvim/rest.nvim
-  :dependencies [:nvim-lua/plenary.nvim]
+[{1 :vhyrro/luarocks.nvim
+  :priority 1000
+  :opts {:rocks [:lua-curl :nvim-nio :mimetypes :xml2lua]}}
+
+  {1 :rest-nvim/rest.nvim
+  :dependencies [:nvim-lua/plenary.nvim :vhyrro/luarocks.nvim]
   :ft [:http]
   :keys [{1 :<localleader>rh 2 :<Plug>RestNvim :desc "Execute HTTP request"}
-         {1 :<localleader>rp 2 :<Plug>RestNvimPreview :desc "Execute HTTP request Preview"}]
+         {1 :<localleader>rp
+          2 :<Plug>RestNvimPreview
+          :desc "Execute HTTP request Preview"}]
   : opts}]
+

@@ -3,7 +3,6 @@ local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local core = autoload("nfnl.core")
 local icons = autoload("config.icons")
-local colors = autoload("config.colors")
 local disable = {"neogitstatus", "netrw", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage", "NvimTree", "packer", "Trouble", "Outline", "spectre_panel", "TelescopePrompt"}
 local ignore = {"help", "packer", "spectre_panel", "TelescopePrompt"}
 local function active_clients()
@@ -28,12 +27,12 @@ local separators = {left = left_separator, right = right_separator}
 local mode = {"mode", separator = {left = left_separator}, right_padding = 0}
 local diff = {"diff", symbols = {added = core["get-in"](icons.all, {"git", "LineAdded"}), modified = core["get-in"](icons.all, {"git", "LineModified"}), removed = core["get-in"](icons.all, {"git", "LineRemoved"})}, colored = true, disabled_buftypes = {"nvim-tree"}, separator = separators}
 local branch = {"branch", icon = (" " .. core.get(icons.git, "Branch")), disabled_buftypes = {"nvim-tree"}, color = {gui = "bold"}, right_padding = 1, separator = separators}
-local filename = {"filename", icon_only = true, disabled_buftypes = {"nvim-tree"}, colored = true, separator = separators}
+local filename = {"filename", file_status = true, newfile_status = true, path = 1, symbols = {modified = "\240\159\140\149", readonly = "\240\159\148\146"}, disabled_buftypes = {"nvim-tree"}, colored = true, separator = separators}
 local filetype = {"filetype", icon_only = true, disabled_buftypes = {"nvim-tree"}, colored = true, separator = separators}
 local language_server = {active_clients(), disabled_buftypes = {"nvim-tree"}, separator = separators}
 local lsp_progress = {"lsp_progress", display_components = {{"title", "percentage", "message"}}, timer = {progress_enddelay = 500, lsp_client_name_enddelay = 500}, separator = separators}
 local sections = {lualine_a = {mode}, lualine_b = {branch, diff}, lualine_c = {diagnostics}, lualine_x = {filename}, lualine_y = {filetype, lsp_progress, language_server}, lualine_z = {"location", {"progress", separator = {right = core.get(icons.ui, "CircleDividerRight")}, left_padding = 1}}}
-local opts = {options = {icons_enabled = true, theme = "auto", component_separators = "|", section_separators = "", disabled_filetypes = disable, ignore_focus = ignore, always_divide_middle = true, globalstatus = true}, sections = sections, inactive_sections = sections, extensions = {}}
+local opts = {options = {icons_enabled = true, theme = "auto", component_separators = "|", section_separators = "", disabled_filetypes = disable, ignore_focus = ignore, always_divide_middle = true, globalstatus = false}, sections = sections, inactive_sections = sections, extensions = {}}
 local function _4_()
   local lualine = require("lualine")
   return lualine.setup(opts)

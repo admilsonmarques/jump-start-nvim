@@ -8,4 +8,4 @@ local function _2_()
   g("baleia", baleia.setup(opts))
   return autocmd("BufWinEnter", {desc = "ANSI colorize repl", pattern = {"conjure-log-*"}, command = "call g:baleia.automatically(bufnr('%'))"})
 end
-return {{"m00qek/baleia.nvim", config = _2_}}
+return {{"m00qek/baleia.nvim", init = _2_}}
