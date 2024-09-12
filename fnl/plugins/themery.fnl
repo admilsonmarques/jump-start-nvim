@@ -55,6 +55,5 @@
   :config (fn []
             (let [themery (require :themery)]
               (themery.setup {: themes
-                              :themeConfigFile :/Users/admilson.marques/dev/ade/jump-start-nvim/lua/config/themes.lua
                               :livePreview true})))}]
 

@@ -56,7 +56,7 @@
                                                     {:desc :Action
                                                      :buffer bufnr})))
               (mason_lspconfig.setup {:ensure_installed [:clojure_lsp
-                                                         :tsserver
+                                                         :ts_ls
                                                          :fennel_language_server
                                                          :lua_ls
                                                          :jqls
@@ -82,9 +82,9 @@
                                                  :pyright (fn []
                                                             (let [lspconfig (require :lspconfig)]
                                                               (lspconfig.pyright.setup {})))
-                                                 :tsserver (fn []
+                                                 :ts_ls (fn []
                                                              (let [lspconfig (require :lspconfig)]
-                                                               (lspconfig.tsserver.setup {})))}})))}
+                                                               (lspconfig.ts_ls.setup {})))}})))}
  {1 :williamboman/mason-lspconfig.nvim}
  ;; Autocompletion
  {1 :zbirenbaum/copilot-cmp

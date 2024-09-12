@@ -7,8 +7,8 @@
   (lnoremap :n :zM "<cmd>lua require 'config.plugin.ufo'.closeAllFolds()<cr>"
             "Close all Folds"))
 
-(local opts {:provider_selector (fn [_ _ _]
-                                  [:treesitter :indent])
+(local opts {; :provider_selector (fn [_ _ _]
+             ;                            [:treesitter :indent])
              :close_fold_kinds_for_ft [:import :comments]
              :preview {:win_config {:border ["" "-" "" "" "" "-" "" ""]
                                     :winhighlight "Normal:Folded"
@@ -23,3 +23,4 @@
             (let [ufo (require :ufo)]
               (bindings)
               (ufo.setup opts)))}]
+

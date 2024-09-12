@@ -51,9 +51,9 @@ local function _3_()
   end
   local function _11_()
     local lspconfig = require("lspconfig")
-    return lspconfig.tsserver.setup({})
+    return lspconfig.ts_ls.setup({})
   end
-  return mason_lspconfig.setup({ensure_installed = {"clojure_lsp", "tsserver", "fennel_language_server", "lua_ls", "jqls", "yamlls", "pyright"}, handlers = {lsp_zero.default_setup(), lua_ls = _5_, fennel_language_server = _6_, clojure_lsp = _7_, jqls = _8_, yamlls = _9_, pyright = _10_, tsserver = _11_}})
+  return mason_lspconfig.setup({ensure_installed = {"clojure_lsp", "ts_ls", "fennel_language_server", "lua_ls", "jqls", "yamlls", "pyright"}, handlers = {lsp_zero.default_setup(), lua_ls = _5_, fennel_language_server = _6_, clojure_lsp = _7_, jqls = _8_, yamlls = _9_, pyright = _10_, ts_ls = _11_}})
 end
 local function _12_()
   local copilot = require("copilot_cmp")

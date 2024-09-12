@@ -15,6 +15,6 @@ local function _2_()
 end
 local function _3_()
   local themery = require("themery")
-  return themery.setup({themes = themes, themeConfigFile = "/Users/admilson.marques/dev/ade/jump-start-nvim/lua/config/themes.lua", livePreview = true})
+  return themery.setup({themes = themes, livePreview = true})
 end
 return {{"folke/tokyonight.nvim", priority = 1000, config = _2_, lazy = false}, {"rose-pine/neovim", name = "rose-pine", priority = 1000, lazy = false}, {"catppuccin/nvim", name = "catppuccin", priority = 1000, lazy = false}, {"Mofiqul/dracula.nvim", name = "dracula", priority = 1000, lazy = false}, {"rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000, lazy = false}, {"zaldih/themery.nvim", keys = keys, config = _3_, lazy = false}}

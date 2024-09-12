@@ -40,7 +40,6 @@
                        :truncate_names true
                        ; :tab_size 18
                        :diagnostics :nvim_lsp
-                       :diagnostics_update_in_insert true
                        : offset
                        :color_icons true
                        :show_buffer_icons true
