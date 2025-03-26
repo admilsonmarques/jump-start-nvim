@@ -45,7 +45,8 @@
                                         "-XX:MaxInlineLevel=20"
                                         "-XX:+UseParallelGC"
                                         :-Xmx10G
-                                        :-Xms2G]})
+                                        :-Xms2G]
+                     :testUserInterface "Test Explorer"})
               ((. (require :cmp_nvim_lsp) :default_capabilities))
               (tset metals-config :on_attach
                     (fn [client bufnr]
