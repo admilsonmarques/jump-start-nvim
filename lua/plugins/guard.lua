@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/guard.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/guard.fnl
 local keys = {{"<localleader>f", "<CMD>Guard fmt<CR>", mode = "n", desc = "Format"}}
 local function _1_()
   local ft = require("guard.filetype")

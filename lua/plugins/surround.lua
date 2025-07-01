@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/surround.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/surround.fnl
 local function _1_()
   local nvim_surround = require("nvim-surround")
   return nvim_surround.setup({})

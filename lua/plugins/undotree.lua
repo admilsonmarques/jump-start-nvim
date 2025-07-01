@@ -1,3 +1,3 @@
--- [nfnl] Compiled from fnl/plugins/undotree.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/undotree.fnl
 local keys = {{"<leader>u", "<CMD>UndotreeToggle<CR>", mode = "n", desc = "UndoTree"}}
 return {{"mbbill/undotree", keys = keys}}

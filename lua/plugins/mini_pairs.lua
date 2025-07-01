@@ -1,2 +1,2 @@
--- [nfnl] Compiled from fnl/plugins/mini_pairs.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/mini_pairs.fnl
 return {{"echasnovski/mini.pairs", event = "VeryLazy", opts = {}}}

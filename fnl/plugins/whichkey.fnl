@@ -1,39 +1,50 @@
-(local plugins {:marks false
-                ;shows a list of your marks on ' and `
-                :registers false
-                ;shows your registers on " in NORMAL or <C-r> in INSERT mode
-                :spelling {:enabled true :suggestions 20}
-                :presets {:operators false
-                          :motions false
-                          :text_objects true
-                          :nav false
-                          :z true
-                          :g false}})
+(local opts {:preset :modern
+             :sort [:alphanum]
+             :expand 0
+             :spec_plugin true
+             :notify true
+             :triggers [{1 :<auto> :mode :nixsotc}]
+             :defer (fn [ctx]
+                      (vim.list_contains [:d :y] ctx.operator))
+             :plugins {:marks {:enabled true}
+                       :registers {:enabled true}
+                       :spelling {:enabled true :suggestions 20}
+                       :presets {:operators false
+                                 :motions false
+                                 :text_objects true
+                                 :nav false
+                                 :z true
+                                 :g false}}
+             :win {:border :rounded
+                   :padding [1 2]}
+             :layout {:width {:min 20 :max 50}
+                      :spacing 3}
+             :show_help true
+             :show_keys true
+             :disable {:ft [:TelescopePrompt]
+                       :bt [:nofile]}})
 
-(local keys [{1 :<leader>q 2 :<CMD>bd<CR> :mode :n :desc "Quit tab"}])
-
-(local leader-mappings {:d {:name :Diagnostic}
-                        :f {:name :Find}
-                        :g {:name :Git}
-                        :h {:name :Harpoon}
-                        :r {:name :Replace}
-                        :T {:name :Themes}
-                        :t {:name :Telekasten}
-                        :x {:name :Settings}
-                        :z {:name :Folds}})
-
-(local local-leader-mappings {:r {:name :Request}})
-
-(local opts {:preset :modern :sort [:alphanum] :expand 0 : plugins})
+(local spec [{1 :<leader>q 2 :<CMD>bd<CR> :desc "Quit buffer" :mode :n}
+             {1 :<leader>d :group :Diagnostic}
+             {1 :<leader>f :group :Find}
+             {1 :<leader>g :group :Git}
+             {1 :<leader>h :group :Harpoon}
+             {1 :<leader>r :group :Replace}
+             {1 :<leader>T :group :Themes}
+             {1 :<leader>t :group :Telekasten}
+             {1 :<leader>x :group :Settings}
+             {1 :<leader>z :group :Folds}
+             {1 :<localleader>r :group :Request}])
 
 [{1 :folke/which-key.nvim
-  :event false
-  : keys
+  :event :VeryLazy
   :init (fn []
+          (tset vim.g :mapleader " ")
+          (tset vim.g :maplocalleader ",")
           (tset vim.opt :timeout true)
-          (tset vim.opt :timeoutlen 300)
-          (let [wk (require :which-key)]
-            (wk.setup opts)
-            (wk.register leader-mappings {:prefix :<leader>})
-            (wk.register local-leader-mappings {:prefix :<localleader>})))}]
+          (tset vim.opt :timeoutlen 300))
+  :config (fn []
+            (let [wk (require :which-key)]
+              (wk.setup opts)
+              (wk.add spec)))}]
 

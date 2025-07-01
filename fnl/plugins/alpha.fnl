@@ -49,7 +49,7 @@
          (theme.button :t (.. (core.get icons.ui :FindText) "  find text")
                        "<cmd>Telescope live_grep<cr>")
          (theme.button :c (.. (core.get icons.ui :Gear) "  configuration")
-                       "<cmd>edit ~/.config/jump-start-nvim/fnl/init.fnl<cr>")]
+                       "<cmd>edit ~/.config/nvim/fnl/init.fnl<cr>")]
    :opts {:hl hl2 :position :center}})
 
 

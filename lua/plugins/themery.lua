@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/themery.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/themery.fnl
 local themes = {"rose-pine", "rose-pine-moon", "rose-pine-main", "tokyonight", "tokyonight-night", "tokyonight-storm", "tokyonight-moon", "catppuccin-frappe", "catppuccin-macchiato", "catppuccin-mocha", "dracula", "kanagawa", "kanagawa-wave", "kanagawa-dragon", "kanagawa-lotus", "rose-pine-dawn", "tokyonight-day", "catppuccin-latte", "dracula-soft"}
 local styles = {comments = {italic = true}, keywords = {italic = true}, functions = {bold = true}, variables = {italic = false}, sidebars = "transparent", floats = "transparent"}
 local tokyonight_config

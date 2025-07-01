@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/config/utils.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/config/utils.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local fun = autoload("config.fun")

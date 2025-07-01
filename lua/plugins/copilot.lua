@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/copilot.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/copilot.fnl
 local _local_1_ = require("config.utils")
 local g = _local_1_["g"]
 local opts = {panel = {["auto-refresh"] = true, keymap = {open = "<Space>gc", refresh = "gr"}}, suggestion = {auto_trigger = true, keymap = {accept = "<C-l>", dismiss = "<C-h>", next = "<C-k>", prev = "<C-j>"}}, filetypes = {"*", true}}

@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/config/keymaps.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/config/keymaps.fnl
 local _local_1_ = require("config.utils")
 local noremap = _local_1_["noremap"]
 local lnoremap = _local_1_["lnoremap"]

@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/alpha.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/alpha.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 local core = autoload("nfnl.core")
@@ -10,7 +10,7 @@ local hl4 = "DevIconVim"
 local header = {type = "group", val = {{type = "text", val = {"                                     ", "      __                _            ", "   /\\ \\ \\___  ___/\\   /(_)_ __ ___   ", "  /  \\/ / _ \\/ _ \\ \\ / | | '_ ` _ \\  ", " / /\\  |  __| (_) \\ v /| | | | | | | ", " \\_\\ \\/ \\___|\\___/ \\_/ |_|_| |_| |_| ", "                                     "}, opts = {position = "center", hl = hl4}}, {type = "text", val = core.str(os.date()), opts = {position = "center", hl = hl3}}}, opts = {hl = hl2, position = "center"}}
 local header2 = {type = "group", val = {{type = "terminal", command = "cat | pokemon-colorscripts --no-title -r 1,3,6", width = 50, height = 15, opts = {position = "center", redraw = true, hl = hl3}}, {type = "text", val = core.str(os.date()), opts = {position = "center", hl = hl3}}}, opts = {hl = hl2, position = "center"}}
 local function quick_btn(theme)
-  return {type = "group", val = {{type = "text", val = "quick links", opts = {hl = hl1, position = "center"}}, {type = "padding", val = 0}, theme.button("e", (core.get(icons.ui, "NewFile") .. "  new file"), "<cmd>ene!<cr>"), theme.button("f", (core.get(icons.ui, "FindFile") .. "  find file"), "<cmd>Telescope find_files<cr>"), theme.button("p", (core.get(icons.ui, "Project") .. "  projects"), "<cmd>Telescope projects<cr>"), theme.button("r", (core.get(icons.ui, "History") .. "  recent files"), "<cmd>Telescope oldfiles<cr>"), theme.button("t", (core.get(icons.ui, "FindText") .. "  find text"), "<cmd>Telescope live_grep<cr>"), theme.button("c", (core.get(icons.ui, "Gear") .. "  configuration"), "<cmd>edit ~/.config/jump-start-nvim/fnl/init.fnl<cr>")}, opts = {hl = hl2, position = "center"}}
+  return {type = "group", val = {{type = "text", val = "quick links", opts = {hl = hl1, position = "center"}}, {type = "padding", val = 0}, theme.button("e", (core.get(icons.ui, "NewFile") .. "  new file"), "<cmd>ene!<cr>"), theme.button("f", (core.get(icons.ui, "FindFile") .. "  find file"), "<cmd>Telescope find_files<cr>"), theme.button("p", (core.get(icons.ui, "Project") .. "  projects"), "<cmd>Telescope projects<cr>"), theme.button("r", (core.get(icons.ui, "History") .. "  recent files"), "<cmd>Telescope oldfiles<cr>"), theme.button("t", (core.get(icons.ui, "FindText") .. "  find text"), "<cmd>Telescope live_grep<cr>"), theme.button("c", (core.get(icons.ui, "Gear") .. "  configuration"), "<cmd>edit ~/.config/nvim/fnl/init.fnl<cr>")}, opts = {hl = hl2, position = "center"}}
 end
 local function fortune_footer(fortune)
   return {type = "text", val = fortune, opts = {hl = "Statement", position = "center"}}

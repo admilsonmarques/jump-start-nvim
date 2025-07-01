@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/illuminate.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/illuminate.fnl
 local function _1_(_, opts)
   local illuminate = require("illuminate")
   return illuminate.configure(opts)

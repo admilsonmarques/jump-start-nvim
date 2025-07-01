@@ -1,3 +1,3 @@
--- [nfnl] Compiled from fnl/plugins/colorizer.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/colorizer.fnl
 do local _ = {{"norcalli/nvim-colorizer.lua", opts = {}}} end
 return {{}}

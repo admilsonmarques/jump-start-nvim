@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/nvimtree.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/nvimtree.fnl
 local _local_1_ = require("nfnl.module")
 local augroup = _local_1_["augroup"]
 local autocmd = _local_1_["autocmd"]

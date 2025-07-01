@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/rest.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/rest.fnl
 local opts
 local function _1_(body)
   return vim.fn.system({"tidy", "-i", "-q", "-"}, body)

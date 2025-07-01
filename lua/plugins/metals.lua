@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/metals.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/metals.fnl
 local _local_1_ = require("config.utils")
 local autocmd = _local_1_["autocmd"]
 local augroup = _local_1_["augroup"]

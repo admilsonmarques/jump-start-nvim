@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/baleia.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/baleia.fnl
 local _local_1_ = require("config.utils")
 local g = _local_1_["g"]
 local autocmd = _local_1_["autocmd"]

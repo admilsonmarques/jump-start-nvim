@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/lspzero.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/lspzero.fnl
 local mason_opts = {ui = {border = "rounded", icons = {package_installed = "\226\156\147", package_pending = "\226\158\156", package_uninstalled = "\226\156\151"}}, max_concurrent_installers = 10}
 local function _1_()
   vim.g["lsp_zero_extend_cmp"] = 0

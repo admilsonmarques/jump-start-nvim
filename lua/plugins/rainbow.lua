@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/rainbow.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/rainbow.fnl
 local function _1_()
   local rainbow = require("rainbow-delimiters.setup")
   return rainbow.setup({})

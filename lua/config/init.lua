@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/config/init.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/config/init.fnl
 local _local_1_ = require("nfnl.module")
 local autoload = _local_1_["autoload"]
 vim.api.nvim_command("command! -nargs=1 -complete=help H help <args> | silent only")

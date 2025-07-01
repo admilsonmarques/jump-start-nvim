@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/nfnl.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/nfnl.fnl
 local keys
 local function _1_()
   local nfnl = require("nfnl.api")

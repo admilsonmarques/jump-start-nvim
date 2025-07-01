@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/gitsigns.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/gitsigns.fnl
 local function _1_()
   local gitsigns = require("gitsigns")
   return gitsigns.setup({})

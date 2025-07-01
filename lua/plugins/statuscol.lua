@@ -1,4 +1,4 @@
--- [nfnl] Compiled from fnl/plugins/statuscol.fnl by https://github.com/Olical/nfnl, do not edit.
+-- [nfnl] fnl/plugins/statuscol.fnl
 local function segments(builtin)
   return {{text = {builtin.foldfunc}, click = "v:lua.ScFa"}, {text = {builtin.lnumfunc, "\226\148\130"}, condition = {true, builtin.not_empty}, click = "v:lua.ScLa"}, {sign = {namespace = {".*"}, colwidth = 1, maxwidth = 2, wrap = true, auto = true}, text = {"%s"}, click = "v:lua.ScSa"}}
 end
