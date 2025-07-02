@@ -3,7 +3,7 @@
              :expand 0
              :spec_plugin true
              :notify true
-             :triggers [{1 :<auto> :mode :nixsotc}]
+             :triggers [{1 :<auto> :mode :nxso}]
              :defer (fn [ctx]
                       (vim.list_contains [:d :y] ctx.operator))
              :plugins {:marks {:enabled true}
@@ -22,7 +22,7 @@
              :show_help true
              :show_keys true
              :disable {:ft [:TelescopePrompt]
-                       :bt [:nofile]}})
+                       :bt [:terminal :help]})
 
 (local spec [{1 :<leader>q 2 :<CMD>bd<CR> :desc "Quit buffer" :mode :n}
              {1 :<leader>d :group :Diagnostic}
@@ -34,7 +34,8 @@
              {1 :<leader>t :group :Telekasten}
              {1 :<leader>x :group :Settings}
              {1 :<leader>z :group :Folds}
-             {1 :<localleader>r :group :Request}])
+             {1 :<localleader>r :group :Request}
+             {1 :<localleader>x :group :Diagnostics}])
 
 [{1 :folke/which-key.nvim
   :event :VeryLazy

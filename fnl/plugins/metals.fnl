@@ -14,18 +14,23 @@
     (when msg.value
       ((. vim.lsp.handlers :$/progress) err msg ctx))))
 
-;; keymaps
-(fn bindings []
-  (llmap :n :I "<cmd>lua require'metals'.organize_imports()<cr>"
-         "Metals - Organize Imports")
-  (llmap :n :m "<cmd>lua require'telescope'.extensions.metals.commands()<cr>"
-         "Metals - menu"))
+;; Define keymaps with filetype restrictions
+(local metals-keys
+  [{1 :<localleader>I 2 "<cmd>lua require'metals'.organize_imports()<cr>"
+    :desc "Organize Imports" :ft [:scala :sbt :sc]}
+   {1 :<localleader>m 2 "<cmd>lua require'telescope'.extensions.metals.commands()<cr>"
+    :desc "Metals Menu" :ft [:scala :sbt :sc]}])
+
+;; Which-key groups for better organization
+(local metals-groups
+  [{1 :<localleader>m :group "Metals" :ft [:scala :sbt :sc]}])
 
 [{1 :scalameta/nvim-metals
   :dependencies [:nvim-lua/plenary.nvim
                  :mfussenegger/nvim-dap
                  :nvim-lua/popup.nvim
                  :hrsh7th/cmp-nvim-lsp]
+  :keys metals-keys
   :config (fn []
             (let [metals (require :metals)
                   metals-config (metals.bare_config)
@@ -51,8 +56,13 @@
               (tset metals-config :on_attach
                     (fn [client bufnr]
                       (metals.setup_dap)))
-              (bindings)
               (autocmd :FileType
                        {:pattern [:scala :sbt :sc]
                         :callback #(metals.initialize_or_attach metals-config)
-                        :group nvim-metals-group})))}]
+                        :group nvim-metals-group})
+              
+              ;; Add which-key groups when which-key is available
+              (vim.schedule (fn []
+                              (when (pcall require :which-key)
+                                (let [wk (require :which-key)]
+                                  (wk.add metals-groups)))))))}]

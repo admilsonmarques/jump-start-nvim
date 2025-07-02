@@ -27,10 +27,10 @@
 (noremap :n :<C-S-l> :<cmd>tabnext<cr>)
 
 ;; Resize with arrows
-(noremap :n :<C-Up> ":resize -2<CR>")
-(noremap :n :<C-Down> ":resize +2<CR>")
-(noremap :n :<C-Left> ":vertical resize -2<CR>")
-(noremap :n :<C-Right> ":vertical resize +2<CR>")
+(noremap :n :<C-S-Up> ":resize -2<CR>")
+(noremap :n :<C-S-Down> ":resize +2<CR>")
+(noremap :n :<C-S-Left> ":vertical resize -2<CR>")
+(noremap :n :<C-S-Right> ":vertical resize +2<CR>")
 
 ;; Visual ;;
 ;; Stay in indent mode

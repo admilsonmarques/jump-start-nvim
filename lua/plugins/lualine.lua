@@ -6,7 +6,7 @@ local icons = autoload("config.icons")
 local disable = {"neogitstatus", "netrw", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage", "NvimTree", "packer", "Trouble", "Outline", "spectre_panel", "TelescopePrompt"}
 local ignore = {"help", "packer", "spectre_panel", "TelescopePrompt"}
 local function active_clients()
-  local clients = vim.lsp.buf_get_clients()
+  local clients = vim.lsp.get_clients({bufnr = 0})
   local client_names = {}
   for _, client in pairs(clients) do
     if (client.name ~= "null-ls") then

@@ -20,7 +20,7 @@
 (local ignore [:help :packer :spectre_panel :TelescopePrompt])
 
 (fn active-clients []
-  (let [clients (vim.lsp.buf_get_clients)
+  (let [clients (vim.lsp.get_clients {:bufnr 0})
         client_names []]
     (each [_ client (pairs clients)]
       (if (not= client.name :null-ls)

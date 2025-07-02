@@ -30,7 +30,7 @@ local function _2_()
   g("conjure#highlight#enabled", true)
   g("conjure#client#fennel#aniseed#aniseed_module_prefix", "aniseed.")
   local function _3_()
-    return vim.diagnostic.disable(0)
+    return vim.diagnostic.enable(false, {bufnr = 0})
   end
   autocmd("BufNewFile", {desc = "Conjure Log disable LSP diagnostics", callback = _3_, group = vim.api.nvim_create_augroup("conjure_log_disable_lsp", {clear = true}), pattern = {"conjure-log-*"}})
   local function _4_()

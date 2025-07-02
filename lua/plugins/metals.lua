@@ -23,10 +23,8 @@ local function status_handler(err, status, ctx)
     return nil
   end
 end
-local function bindings()
-  llmap("n", "I", "<cmd>lua require'metals'.organize_imports()<cr>", "Metals - Organize Imports")
-  return llmap("n", "m", "<cmd>lua require'telescope'.extensions.metals.commands()<cr>", "Metals - menu")
-end
+local metals_keys = {{"<localleader>I", "<cmd>lua require'metals'.organize_imports()<cr>", desc = "Organize Imports", ft = {"scala", "sbt", "sc"}}, {"<localleader>m", "<cmd>lua require'telescope'.extensions.metals.commands()<cr>", desc = "Metals Menu", ft = {"scala", "sbt", "sc"}}}
+local metals_groups = {{"<localleader>m", group = "Metals", ft = {"scala", "sbt", "sc"}}}
 local function _4_()
   local metals = require("metals")
   local metals_config = metals.bare_config()
@@ -39,10 +37,18 @@ local function _4_()
     return metals.setup_dap()
   end
   metals_config["on_attach"] = _5_
-  bindings()
   local function _6_()
     return metals.initialize_or_attach(metals_config)
   end
-  return autocmd("FileType", {pattern = {"scala", "sbt", "sc"}, callback = _6_, group = nvim_metals_group})
+  autocmd("FileType", {pattern = {"scala", "sbt", "sc"}, callback = _6_, group = nvim_metals_group})
+  local function _7_()
+    if pcall(require, "which-key") then
+      local wk = require("which-key")
+      return wk.add(metals_groups)
+    else
+      return nil
+    end
+  end
+  return vim.schedule(_7_)
 end
-return {{"scalameta/nvim-metals", dependencies = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-lua/popup.nvim", "hrsh7th/cmp-nvim-lsp"}, config = _4_}}
+return {{"scalameta/nvim-metals", dependencies = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-lua/popup.nvim", "hrsh7th/cmp-nvim-lsp"}, keys = metals_keys, config = _4_}}
