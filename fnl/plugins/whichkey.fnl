@@ -22,7 +22,7 @@
              :show_help true
              :show_keys true
              :disable {:ft [:TelescopePrompt]
-                       :bt [:terminal :help]})
+                       :bt [:terminal :help]}})
 
 (local spec [{1 :<leader>q 2 :<CMD>bd<CR> :desc "Quit buffer" :mode :n}
              {1 :<leader>d :group :Diagnostic}

@@ -23,8 +23,8 @@ local function status_handler(err, status, ctx)
     return nil
   end
 end
-local metals_keys = {{"<localleader>I", "<cmd>lua require'metals'.organize_imports()<cr>", desc = "Organize Imports", ft = {"scala", "sbt", "sc"}}, {"<localleader>m", "<cmd>lua require'telescope'.extensions.metals.commands()<cr>", desc = "Metals Menu", ft = {"scala", "sbt", "sc"}}}
-local metals_groups = {{"<localleader>m", group = "Metals", ft = {"scala", "sbt", "sc"}}}
+local metals_keys = {{"<localleader>I", "<cmd>lua require'metals'.organize_imports()<cr>", desc = "Organize Imports"}, {"<localleader>m", "<cmd>lua require'telescope'.extensions.metals.commands()<cr>", desc = "Metals Menu"}}
+local metals_groups = {{"<localleader>m", group = "Metals"}}
 local function _4_()
   local metals = require("metals")
   local metals_config = metals.bare_config()

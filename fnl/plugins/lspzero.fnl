@@ -176,7 +176,7 @@
               (lsp_zero.extend_cmp)
               (cmp.setup {:formatting (lsp_zero.cmp_format {:details true})
                           :sources (cmp.config.sources [{:name :nvim_lsp :priority 1000}
-                                                         {:name :copilot :priority 900}
+                                                         
                                                          {:name :luasnip :priority 800}
                                                          {:name :buffer :priority 500 :keyword_length 3}
                                                          {:name :path :priority 400}]
@@ -185,7 +185,7 @@
                           :window {:completion (cmp.config.window.bordered)
                                    :documentation (cmp.config.window.bordered)}
                           :mapping (cmp.mapping.preset.insert {:<C-SPACE> (cmp.mapping.complete)
-                                                               :<C-i> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
+                                                               :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
                                                                                             :select true})
                                                                :<C-u> (cmp.mapping.scroll_docs -4)
                                                                :<C-d> (cmp.mapping.scroll_docs 4)

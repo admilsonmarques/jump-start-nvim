@@ -5,9 +5,9 @@
                                     :endpoint "http://127.0.1:8899/v1"
                                     :model "gpt-4o"
                                     :timeout 30000
-                                    :temperature 0
                                     :max_completion_tokens 81920
-                                    :reasoning_effort "medium"}
+                                    :reasoning_effort "medium"
+                                    :extra_request_body {:temperature 0}}
                          :copilot {:endpoint "https://api.github.com"
                                    :model :gpt-4o-2024-05-13
                                    :proxy nil

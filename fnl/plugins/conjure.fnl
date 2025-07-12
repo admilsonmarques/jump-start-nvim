@@ -3,50 +3,50 @@
 ;; Better organized keymap configuration
 (local conjure-keys
   [{1 :<localleader>cc 2 "<cmd>Lein!<cr><bar><cmd>ConjureLogVSplit<cr><bar><cmd>ConjureConnect<cr>" 
-    :desc "Jack-in Lein and Conjure" :ft [:clojure]}
-   {1 :gd 2 "<cmd>ConjureDefWord<CR>" :desc "Go to Definition" :ft [:clojure :fennel :scheme]}
-   {1 :<c-]> 2 "<cmd>ConjureDefWord<CR>" :desc "Go to Definition" :ft [:clojure :fennel :scheme]}
-   {1 :K 2 "<cmd>ConjureDocWord<CR>" :desc "Show Documentation" :ft [:clojure :fennel :scheme]}
-   {1 :gD 2 "<cmd>ConjureCljViewSource<CR>" :desc "View Source" :ft [:clojure :fennel :scheme]}
+    :desc "Jack-in Lein and Conjure"}
+   {1 :gd 2 "<cmd>ConjureDefWord<CR>" :desc "Go to Definition"}
+   {1 "<c-]>" 2 "<cmd>ConjureDefWord<CR>" :desc "Go to Definition"}
+   {1 :K 2 "<cmd>ConjureDocWord<CR>" :desc "Show Documentation"}
+   {1 :gD 2 "<cmd>ConjureCljViewSource<CR>" :desc "View Source"}
    ;; Evaluation keymaps with better descriptions
-   {1 :<localleader>ee 2 "<cmd>ConjureEval<CR>" :desc "Evaluate Current Form" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>er 2 "<cmd>ConjureEvalRootForm<CR>" :desc "Evaluate Root Form" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>ef 2 "<cmd>ConjureEvalFile<CR>" :desc "Evaluate File" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>eb 2 "<cmd>ConjureEvalBuf<CR>" :desc "Evaluate Buffer" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>em 2 "<cmd>ConjureEvalMotion<CR>" :desc "Evaluate Motion" :ft [:clojure :fennel :scheme]}
+   {1 :<localleader>ee 2 "<cmd>ConjureEval<CR>" :desc "Evaluate Current Form"}
+   {1 :<localleader>er 2 "<cmd>ConjureEvalRootForm<CR>" :desc "Evaluate Root Form"}
+   {1 :<localleader>ef 2 "<cmd>ConjureEvalFile<CR>" :desc "Evaluate File"}
+   {1 :<localleader>eb 2 "<cmd>ConjureEvalBuf<CR>" :desc "Evaluate Buffer"}
+   {1 :<localleader>em 2 "<cmd>ConjureEvalMotion<CR>" :desc "Evaluate Motion"}
    ;; Enhanced testing support
-   {1 :<localleader>tt 2 "<cmd>ConjureEvalCurrentTest<CR>" :desc "Test Current" :ft [:clojure]}
-   {1 :<localleader>tn 2 "<cmd>ConjureTestRunNS<CR>" :desc "Test Namespace" :ft [:clojure]}
-   {1 :<localleader>ta 2 "<cmd>ConjureTestRunAll<CR>" :desc "Test All" :ft [:clojure]}
-   {1 :<localleader>tr 2 "<cmd>ConjureTestRefresh<CR>" :desc "Test Refresh" :ft [:clojure]}
+   {1 :<localleader>tt 2 "<cmd>ConjureEvalCurrentTest<CR>" :desc "Test Current"}
+   {1 :<localleader>tn 2 "<cmd>ConjureTestRunNS<CR>" :desc "Test Namespace"}
+   {1 :<localleader>ta 2 "<cmd>ConjureTestRunAll<CR>" :desc "Test All"}
+   {1 :<localleader>tr 2 "<cmd>ConjureTestRefresh<CR>" :desc "Test Refresh"}
    ;; Log management
-   {1 :<localleader>ls 2 "<cmd>ConjureLogSplit<CR>" :desc "Log Split" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>lv 2 "<cmd>ConjureLogVSplit<CR>" :desc "Log VSplit" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>lt 2 "<cmd>ConjureLogTab<CR>" :desc "Log Tab" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>lq 2 "<cmd>ConjureLogCloseVisible<CR>" :desc "Close Log" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>lr 2 "<cmd>ConjureLogResetSoft<CR>" :desc "Log Reset Soft" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>lR 2 "<cmd>ConjureLogResetHard<CR>" :desc "Log Reset Hard" :ft [:clojure :fennel :scheme]}
+   {1 :<localleader>ls 2 "<cmd>ConjureLogSplit<CR>" :desc "Log Split"}
+   {1 :<localleader>lv 2 "<cmd>ConjureLogVSplit<CR>" :desc "Log VSplit"}
+   {1 :<localleader>lt 2 "<cmd>ConjureLogTab<CR>" :desc "Log Tab"}
+   {1 :<localleader>lq 2 "<cmd>ConjureLogCloseVisible<CR>" :desc "Close Log"}
+   {1 :<localleader>lr 2 "<cmd>ConjureLogResetSoft<CR>" :desc "Log Reset Soft"}
+   {1 :<localleader>lR 2 "<cmd>ConjureLogResetHard<CR>" :desc "Log Reset Hard"}
    ;; Connection management
-   {1 :<localleader>cn 2 "<cmd>ConjureConnect<CR>" :desc "Connect" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>cd 2 "<cmd>ConjureDisconnect<CR>" :desc "Disconnect" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>cs 2 "<cmd>ConjureStatus<CR>" :desc "Connection Status" :ft [:clojure :fennel :scheme]}
+   {1 :<localleader>cn 2 "<cmd>ConjureConnect<CR>" :desc "Connect"}
+   {1 :<localleader>cd 2 "<cmd>ConjureDisconnect<CR>" :desc "Disconnect"}
+   {1 :<localleader>cs 2 "<cmd>ConjureStatus<CR>" :desc "Connection Status"}
    ;; FIXED: Telescope integration using <localleader>s (Search) to avoid conflict with formatting
    {1 :<localleader>sp 2 (fn [] 
                            (when (pcall require :telescope)
                              (vim.cmd "Telescope live_grep search_dirs=src/")))
-    :desc "Search Project" :ft [:clojure :fennel :scheme]}
+    :desc "Search Project"}
    {1 :<localleader>sf 2 (fn []
                            (when (pcall require :telescope)
                              (vim.cmd "Telescope find_files search_dirs=src/")))
-    :desc "Search Files" :ft [:clojure :fennel :scheme]}])
+    :desc "Search Files"}])
 
 ;; Which-key groups for better organization
 (local conjure-groups
-  [{1 :<localleader>e :group "Evaluate" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>l :group "Log" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>c :group "Connection" :ft [:clojure :fennel :scheme]}
-   {1 :<localleader>t :group "Test" :ft [:clojure]}
-   {1 :<localleader>s :group "Search" :ft [:clojure :fennel :scheme]}])
+  [{1 :<localleader>e :group "Evaluate"}
+   {1 :<localleader>l :group "Log"}
+   {1 :<localleader>c :group "Connection"}
+   {1 :<localleader>t :group "Test"}
+   {1 :<localleader>s :group "Search"}])
 
 ;; Enhanced REPL connection management
 (fn ensure-repl-connection []
@@ -165,4 +165,4 @@
           (vim.schedule (fn []
                           (when (pcall require :which-key)
                             (let [wk (require :which-key)]
-                              (wk.add conjure-groups)))))))}]
+                              (wk.add conjure-groups))))))}]

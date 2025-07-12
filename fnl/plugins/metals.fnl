@@ -17,13 +17,13 @@
 ;; Define keymaps with filetype restrictions
 (local metals-keys
   [{1 :<localleader>I 2 "<cmd>lua require'metals'.organize_imports()<cr>"
-    :desc "Organize Imports" :ft [:scala :sbt :sc]}
+    :desc "Organize Imports"}
    {1 :<localleader>m 2 "<cmd>lua require'telescope'.extensions.metals.commands()<cr>"
-    :desc "Metals Menu" :ft [:scala :sbt :sc]}])
+    :desc "Metals Menu"}])
 
 ;; Which-key groups for better organization
 (local metals-groups
-  [{1 :<localleader>m :group "Metals" :ft [:scala :sbt :sc]}])
+  [{1 :<localleader>m :group "Metals"}])
 
 [{1 :scalameta/nvim-metals
   :dependencies [:nvim-lua/plenary.nvim
