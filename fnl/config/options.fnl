@@ -81,7 +81,7 @@
                 ;set numbered lines
                 :number true
                 ;set relative numbered lines
-                :relativenumber true
+                :relativenumber false
                 ;set number column width to 2 {default 4}
                 :numberwidth 4
                 ;always show the sign column, otherwise it would shift the text each time

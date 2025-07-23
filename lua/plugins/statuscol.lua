@@ -1,6 +1,6 @@
 -- [nfnl] fnl/plugins/statuscol.fnl
 local function segments(builtin)
-  return {{text = {builtin.foldfunc}, click = "v:lua.ScFa"}, {text = {builtin.lnumfunc, "\226\148\130"}, condition = {true, builtin.not_empty}, click = "v:lua.ScLa"}, {sign = {namespace = {".*"}, colwidth = 1, maxwidth = 2, wrap = true, auto = true}, text = {"%s"}, click = "v:lua.ScSa"}}
+  return {{text = {builtin.foldfunc}, click = "v:lua.ScFa"}, {text = {builtin.lnumfunc, "\226\148\130"}, condition = {true, builtin.not_empty}, click = "v:lua.ScLa", rnu = false}, {sign = {namespace = {".*"}, colwidth = 1, maxwidth = 2, wrap = true, auto = true}, text = {"%s"}, click = "v:lua.ScSa"}}
 end
 local function opts(builtin)
   return {foldfunc = "builtin", setopt = true, separator = " ", relculright = true, segments = segments(builtin), clickmod = "c"}

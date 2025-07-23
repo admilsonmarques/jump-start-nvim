@@ -1,6 +1,7 @@
 (fn segments [builtin]
   [{:text [builtin.foldfunc] :click "v:lua.ScFa"}
-   {:text [builtin.lnumfunc "│"]
+   {:text [builtin.lnumfunc "│"] 
+    :rnu false
     :condition [true builtin.not_empty]
     :click "v:lua.ScLa"}
    {:sign {:namespace [".*"] :colwidth 1 :maxwidth 2 :wrap true :auto true}
