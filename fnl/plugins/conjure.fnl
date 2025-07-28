@@ -1,9 +1,34 @@
 (local {: g : opt : autocmd} (require :config.utils))
 
+;; CIDER-style dependency injection versions
+(local cider-nrepl-version "0.57.0")
+(local nrepl-version "1.3.1")
+
+;; Build CIDER jack-in command with dependency injection
+;; with-profile +unit,+integration,+dev ensures test dependencies and paths are available
+(fn cider-jack-in-cmd [?port]
+  (.. "lein with-profile +unit,+integration,+dev update-in :dependencies conj '[nrepl \"" nrepl-version "\"]' -- "
+      "update-in :plugins conj '[cider/cider-nrepl \"" cider-nrepl-version "\"]' -- "
+      "repl :headless"
+      (if (and ?port (not= ?port ""))
+          (.. " :port " ?port)
+          "")))
+
 ;; Better organized keymap configuration
 (local conjure-keys
-  [{1 :<localleader>cc 2 "<cmd>Lein!<cr><bar><cmd>ConjureLogVSplit<cr><bar><cmd>ConjureConnect<cr>" 
-    :desc "Jack-in Lein and Conjure"}
+  [   {1 :<localleader>cc 2 (fn [] 
+                           (vim.cmd (.. "!" (cider-jack-in-cmd) " &"))
+                           (vim.cmd "ConjureLogVSplit")
+                           (vim.schedule (fn [] 
+                                          (vim.defer_fn #(vim.cmd "ConjureConnect") 3000))))
+    :desc "Jack-in with CIDER deps and Conjure"}
+   {1 :<localleader>cC 2 (fn []
+                           (let [port (vim.fn.input "Enter nREPL port: ")]
+                             (vim.cmd (.. "!" (cider-jack-in-cmd port) " &"))
+                             (vim.cmd "ConjureLogVSplit")
+                             (vim.schedule (fn []
+                                            (vim.defer_fn #(vim.cmd "ConjureConnect") 3000)))))
+    :desc "Jack-in with CIDER deps on specific port"}
    {1 :gd 2 "<cmd>ConjureDefWord<CR>" :desc "Go to Definition"}
    {1 "<c-]>" 2 "<cmd>ConjureDefWord<CR>" :desc "Go to Definition"}
    {1 :K 2 "<cmd>ConjureDocWord<CR>" :desc "Show Documentation"}
@@ -81,12 +106,12 @@
           (g "conjure#extract#tree_sitter#enabled" true)
           (g "conjure#client#clojure#nrepl#connection#auto_repl#enabled" true)
           (g "conjure#client#clojure#nrepl#connection#auto_repl#hidden" false)
-          (g "conjure#client#clojure#nrepl#connection#auto_repl#cmd" :Lein!)
+          ;; Use CIDER-style dependency injection instead of plain Lein!
+          (g "conjure#client#clojure#nrepl#connection#auto_repl#cmd" (cider-jack-in-cmd))
           (g "conjure#client#clojure#nrepl#eval#auto_require" true)
           
           ;; Enhanced test configuration
-          (g "conjure#client#clojure#nrepl#test#current_form_names"
-             [:deftest :defflow :defspec :defcheck])
+          (set vim.g.conjure#client#clojure#nrepl#test#current_form_names ["deftest" "defflow" "defspec" "describe"])
           (g "conjure#client#clojure#nrepl#test#runner" :clojure)
           
           ;; Remove duplicate tree_sitter setting
@@ -114,7 +139,7 @@
           ;; Number of lines to check for `ns` form, used for setting evaluation context
           ;; `b:conjure#context` to override a specific buffer that isn't finding the context
           ;; Default: `24`
-          (g "conjure#extract#context_header_lines" 100)
+          (g "conjure#extract#context_header_lines" 1000)
           
           ;; Highlight
           (g "conjure#highlight#enabled" true)
