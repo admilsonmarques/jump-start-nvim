@@ -1,18 +1,16 @@
 (local {: g} (require :config.utils))
 
 (local opts {:provider :internal
-             :providers {:internal {:__inherited_from :openai
-                                    :endpoint "http://127.0.1:8899/v1"
-                                    :model :gpt-4o
-                                    :timeout 30000
-                                    :extra_request_body {:temperature 0
-                                                         :max_completion_tokens 81920
-                                                         :reasoning_effort :medium}}
-                         :copilot {:endpoint "https://api.github.com"
+             :providers {:copilot {:endpoint "https://api.github.com"
                                    :model :gpt-4o-2024-05-13
                                    :proxy nil
                                    :allow_insecure false
-                                   :timeout 30000}}
+                                   :timeout 30000}
+                         :internal {:endpoint "https://ist-prod-litellm.nullmplatform.com/"
+                                    :__inherited_from :openai
+                                    :model :gpt-4o-2024-08-06
+                                    :api_key_name :LITELLM_KEY
+                                    :timeout 30000}}
              :behaviour {:auto_suggestions false
                          :auto_set_highlight_group true
                          :auto_set_keymaps true
