@@ -22,6 +22,7 @@
 (tset vim.opt :foldlevelstart 99)
 (tset vim.opt :foldenable true)
 (tset vim.opt :foldnestmax 1)
+(tset vim.opt :laststatus 3)
 
 ;sets a nvim global options
 

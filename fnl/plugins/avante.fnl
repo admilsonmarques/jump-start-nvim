@@ -10,12 +10,13 @@
                                     :__inherited_from :openai
                                     :model :gpt-4o-2024-08-06
                                     :api_key_name :LITELLM_KEY
-                                    :timeout 30000}}
-             :behaviour {:auto_suggestions false
+                                    :timeout 30000}
+                         :gemini {:model :gemini-2.5-flash}}
+             :behaviour {:auto_suggestions true
                          :auto_set_highlight_group true
                          :auto_set_keymaps true
                          :auto_apply_diff_after_generation false
-                         :support_paste_from_clipboard false
+                         :support_paste_from_clipboard true
                          :minimize_diff true
                          :enable_token_counting true}
              :mappings {:diff {:ours :co
