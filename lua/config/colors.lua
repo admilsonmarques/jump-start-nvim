@@ -1,6 +1,6 @@
 -- [nfnl] fnl/config/colors.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local black = {lightest = "", ligther = "", light = "", base = "#20242d", dark = "", darker = "", darkest = ""}
 local white = {lightest = "", ligther = "", light = "", base = "#C9CCCD", dark = "", darker = "", darkest = ""}

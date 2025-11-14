@@ -1,6 +1,6 @@
 -- [nfnl] fnl/config/init.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 vim.api.nvim_command("command! -nargs=1 -complete=help H help <args> | silent only")
 local function _2_()
   return vim.cmd("if line(\"'\\\"\") > 1 && line(\"'\\\"\") <= line(\"$\") | exe \"normal! g'\\\"\" | endif")

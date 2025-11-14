@@ -1,8 +1,8 @@
 -- [nfnl] fnl/plugins/nvimtree.fnl
 local _local_1_ = require("nfnl.module")
-local augroup = _local_1_["augroup"]
-local autocmd = _local_1_["autocmd"]
-local autoload = _local_1_["autoload"]
+local augroup = _local_1_.augroup
+local autocmd = _local_1_.autocmd
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local icons = autoload("config.icons")
 local diagnostics = {enable = true, icons = {hint = core["get-in"](icons.all, {"diagnostics", "BoldHint"}), info = core["get-in"](icons.all, {"diagnostics", "BoldInformation"}), warning = core["get-in"](icons.all, {"diagnostics", "BoldWarning"}), error = core["get-in"](icons.all, {"diagnostics", "BoldError"})}, show_on_dirs = false}

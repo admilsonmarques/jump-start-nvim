@@ -1,7 +1,7 @@
 (local keys [{1 :<localleader>f
               2 (fn []
                   (let [conform (require :conform)]
-                    (conform.format )))
+                    (conform.format)))
               :mode [:n :v]
               :desc "Format buffer"}])
 
@@ -21,14 +21,17 @@
                                                     :args ["-"]}
                                            :black {:command :black :args ["-"]}
                                            :shfmt {:command :shfmt}
-                                           :prettierd {:command :prettierd}}
+                                           :prettierd {:command :prettierd
+                                                       :stdin true
+                                                       :args [:--single-quote
+                                                              :--stdin-filepath
+                                                              :$FILENAME]}}
                               ;; Associate formatters with filetypes
                               :formatters_by_ft {:fennel [:fnlfmt]
                                                  :lua [:stylua]
                                                  :clojure [:joker]
                                                  :python [:black]
                                                  :sh [:shfmt]
-                                                 ;; Use a single, fast daemon for all web formats
                                                  :javascript [:prettierd]
                                                  :typescript [:prettierd]
                                                  :typescriptreact [:prettierd]

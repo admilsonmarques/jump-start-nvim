@@ -1,6 +1,6 @@
 -- [nfnl] fnl/config/icons.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local kind = {Array = "\243\176\133\168", Boolean = "\238\170\143", Class = "\238\173\155", Color = "\238\173\156", Constant = "\238\136\172", Constructor = "\238\136\143", Enum = "\239\133\157", EnumMember = "\239\133\157", Event = "\239\131\167", Field = "\238\156\150", File = "\239\133\155", Folder = "\238\170\131", Function = "\243\176\138\149", Interface = "\239\131\168", Key = "\238\172\145", Keyword = "\238\173\162", Method = "\238\170\140", Module = "\243\176\174\140", Namespace = "\238\170\139", Null = "\239\179\160", Number = "\239\138\146", Object = "\239\137\135", Operator = "\238\173\164", Package = "\239\146\135", Property = "\239\130\173", Reference = "\239\146\129", Snippet = "\238\173\166", String = "\243\176\133\179", Struct = "\239\134\179", Text = "\238\173\169", TypeParameter = "\238\170\146", Unit = "\238\136\159", Value = "\243\176\163\135", Variable = "\238\156\150", Note = "\239\128\173", Daily = "\243\176\131\173", Weekly = "\243\176\168\179"}
 local git = {LineGeneral = "\226\148\131", LineAdd = "+", LineChange = "~", LineDelete = "-", FileDeleted = "\239\145\152", FileIgnored = "\226\151\140", FileRenamed = "\226\158\156", FileStaged = "S", FileUnmerged = "\238\156\167", FileUnstaged = "\239\145\132", FileUntracked = "U", Diff = "\239\145\128", Repo = "\239\144\129", Octoface = "\239\144\134", Branch = "\238\156\165"}

@@ -26,6 +26,12 @@
 
 ;sets a nvim global options
 
+; Configure per-mode cursor shapes and blinking in terminals that support it
+; block for normal/visual/cmd, vertical bar for insert, horizontal for replace
+; use blink timings: blinkwait, blinkon, blinkoff (ms)
+(tset vim.opt :guicursor
+      "n-v-c:block-blinkwait400-blinkon400-blinkoff400,i-ci-ve:ver25-blinkwait300-blinkon300-blinkoff300,r-cr:hor20,o:hor50")
+
 (local options {;settings needed for compe autocompletion
                 :completeopt "menuone,noselect,preview"
                 ;case insensitive search
@@ -66,7 +72,7 @@
                 ;time to wait for a mapped sequence to complete (in milliseconds)
                 :timeoutlen 100
                 ;enable persistent undo
-                :undofile true
+                ;undofile true
                 ;faster completion (4000ms default)
                 :updatetime 300
                 ;if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited

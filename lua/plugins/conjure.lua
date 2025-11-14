@@ -1,8 +1,8 @@
 -- [nfnl] fnl/plugins/conjure.fnl
 local _local_1_ = require("config.utils")
-local g = _local_1_["g"]
-local opt = _local_1_["opt"]
-local autocmd = _local_1_["autocmd"]
+local g = _local_1_.g
+local opt = _local_1_.opt
+local autocmd = _local_1_.autocmd
 local cider_nrepl_version = "0.57.0"
 local nrepl_version = "1.3.1"
 local function cider_jack_in_cmd(_3fport, _3fprofile)

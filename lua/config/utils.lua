@@ -1,6 +1,6 @@
 -- [nfnl] fnl/config/utils.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local fun = autoload("config.fun")
 local core = autoload("nfnl.core")
 local vim = vim
@@ -75,9 +75,9 @@ local function autocmd(cmd, table)
   return vim.api.nvim_create_autocmd(cmd, table)
 end
 local function fmt_autocmd(_8_)
-  local language = _8_["language"]
-  local pattern = _8_["pattern"]
-  local cmd = _8_["cmd"]
+  local language = _8_.language
+  local pattern = _8_.pattern
+  local cmd = _8_.cmd
   local group = augroup((language .. "_formatter"), {clear = true})
   return autocmd("BufWritePost", {pattern = pattern, group = group, desc = ("Auto-format " .. language .. " files before saving"), callback = vim.cmd(("!" .. cmd .. " " .. vim.api.nvim_buf_get_name(0)))})
 end

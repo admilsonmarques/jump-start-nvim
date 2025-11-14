@@ -1,7 +1,7 @@
 -- [nfnl] fnl/config/keymaps.fnl
 local _local_1_ = require("config.utils")
-local noremap = _local_1_["noremap"]
-local lnoremap = _local_1_["lnoremap"]
+local noremap = _local_1_.noremap
+local lnoremap = _local_1_.lnoremap
 noremap("n", "<C-s>", ":update!<CR>", "Save file")
 noremap("i", "<C-s>", "<ESC>:update!<CR>", "Save file")
 lnoremap("n", "Q", "<Cmd>%bd|e#<cr>", "Close all but current buffer")

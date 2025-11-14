@@ -1,6 +1,6 @@
 -- [nfnl] fnl/plugins/lualine.fnl
 local _local_1_ = require("nfnl.module")
-local autoload = _local_1_["autoload"]
+local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
 local icons = autoload("config.icons")
 local disable = {"neogitstatus", "netrw", "alpha", "Outline", "NeogitStatus", "NeogitCommitMessage", "NvimTree", "packer", "Trouble", "Outline", "spectre_panel", "TelescopePrompt"}

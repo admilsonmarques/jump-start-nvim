@@ -1,8 +1,8 @@
 -- [nfnl] fnl/plugins/metals.fnl
 local _local_1_ = require("config.utils")
-local autocmd = _local_1_["autocmd"]
-local augroup = _local_1_["augroup"]
-local llmap = _local_1_["llmap"]
+local autocmd = _local_1_.autocmd
+local augroup = _local_1_.augroup
+local llmap = _local_1_.llmap
 local function status_handler(err, status, ctx)
   local text = status.text:gsub("[\226\160\135\226\160\139\226\160\153\226\160\184\226\160\180\226\160\166]", ""):gsub("^%s*(.-)%s*$", "%1")
   local msg_val

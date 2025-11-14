@@ -1,4 +1,4 @@
 -- [nfnl] fnl/plugins/eca.fnl
-local opts = {behavior = {auto_start_server = true}}
-local keys = {}
+local opts = {behavior = {auto_start_server = true, auto_focus_sidebar = false, auto_set_keymaps = false}}
+local keys = {{"<leader>ac", "<cmd>EcaChat<cr>", desc = "ECA Chat"}, {"<leader>at", "<cmd>EcaToggle<cr>", desc = "ECA Toggle"}, {"<leader>af", "<cmd>EcaFocus<cr>", desc = "ECA Focus"}, {"<leader>ax", "<cmd>EcaClose<cr>", desc = "ECA Close"}, {"<leader>aaf", "<cmd>EcaAddFile  .. vim.fn.expand(\"%\") <cr>", desc = "ECA Add File as Context"}, {"<leader>aas", "<cmd>EcaAddSelection<cr>", desc = "ECA Add Selection as Context"}, {"<leader>ass", "<cmd>EcaServerStart<cr>", desc = "ECA Server Start"}, {"<leader>asx", "<cmd>EcaServerStop<cr>", desc = "ECA Server Stop"}, {"<leader>asm", "<cmd>EcaChatSelectModel<cr>", desc = "ECA Select Model"}, {"<leader>asb", "<cmd>EcaChatSelectBehavior<cr>", desc = "ECA Select Behavior"}}
 return {{"editor-code-assistant/eca-nvim", dependencies = {"nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim"}, keys = keys, opts = opts, lazy = false}}
