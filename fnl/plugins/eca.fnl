@@ -1,4 +1,4 @@
-(local opts {:behavior {:auto_start_server true
+(local opts {:behavior {:auto_start_server false
                         :auto_set_keymaps false
                         :auto_focus_sidebar false}})
 
@@ -15,6 +15,7 @@
         {1 :<leader>asb 2 :<cmd>EcaChatSelectBehavior<cr> :desc "ECA Select Behavior"}])
 
 [{1 :editor-code-assistant/eca-nvim
+  :branch :context-improvements
   :dependencies [:nvim-lua/plenary.nvim :MunifTanjim/nui.nvim]
   : keys
   : opts

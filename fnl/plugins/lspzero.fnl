@@ -200,7 +200,7 @@
                                               (luasnip.lsp_expand args.body))}
                           :window {:completion (cmp.config.window.bordered)
                                    :documentation (cmp.config.window.bordered)}
-                          :mapping (cmp.mapping.preset.insert {:<C-SPACE> (cmp.mapping.complete)
+                          :mapping (cmp.mapping.preset.insert {:<C-/> (cmp.mapping.complete)
                                                                :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
                                                                                            :select true})
                                                                :<C-u> (cmp.mapping.scroll_docs -4)
