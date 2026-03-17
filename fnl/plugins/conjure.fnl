@@ -5,12 +5,11 @@
 (local nrepl-version :1.3.1)
 
 ;; Build CIDER jack-in command with dependency injection
-;; with-profile +unit,+integration,+dev ensures test dependencies and paths are available
-(fn cider-jack-in-cmd [?port ?profile] ; with-profile +unit,+integration,+dev
+(fn cider-jack-in-cmd [?port ?profiles]
   (if (and ?port (not= ?port ""))
       (.. "lein repl :connect " ?port "")
-      (let [profile (if ?profile "with-profile +unit,+integration,+dev" "")]
-        (.. "lein " profile "  update-in :dependencies conj '[nrepl \""
+      (let [profile (if ?profiles (.. "with-profile " ?profiles) "")]
+        (.. "lein " profile " update-in :dependencies conj '[nrepl \""
             nrepl-version "\"]' -- "
             "update-in :plugins conj '[cider/cider-nrepl \"" cider-nrepl-version
             "\"]' -- " "repl :headless"))))
@@ -26,12 +25,23 @@
                       :desc "Jack-in with CIDER deps and Conjure"}
                      {1 :<localleader>c!
                       2 (fn []
-                          (vim.cmd (.. "!" (cider-jack-in-cmd nil true) " &"))
+                          (vim.cmd (.. "!" (cider-jack-in-cmd nil :+unit,+integration,+dev) " &"))
                           (vim.cmd :ConjureLogVSplit)
                           (vim.schedule (fn []
                                           (vim.defer_fn #(vim.cmd :ConjureConnect)
                                             3000))))
-                      :desc "Jack-in with CIDER with profiles, deps and Conjure"}
+                      :desc "Jack-in with test profiles and Conjure"}
+                     {1 :<localleader>cF
+                      2 (fn []
+                          (vim.cmd :ConjureDisconnect)
+                          (vim.cmd (.. "!" (cider-jack-in-cmd nil :+storm) " &"))
+                          (vim.cmd :ConjureLogVSplit)
+                          (vim.schedule (fn []
+                                          (vim.defer_fn (fn []
+                                                          (vim.cmd :ConjureConnect)
+                                                          (vim.defer_fn #(vim.cmd "ConjureEval (do (require '[flow-storm.api :as fs-api]) (fs-api/local-connect))") 3000))
+                                            6000))))
+                      :desc "Jack-in with FlowStorm"}
                      {1 :<localleader>cC
                       2 (fn []
                           (let [port (vim.fn.input "Enter nREPL port: ")]
@@ -175,8 +185,6 @@
                [:deftest :defflow :defspec :describe])
           (g "conjure#client#clojure#nrepl#test#runner" :clojure)
           ;; Remove duplicate tree_sitter setting
-          ;; Set e register for evaluation result
-          (g "conjure#eval#result_register" :e)
           ;; Evaluate root form (top level form) under the cursor
           ;; Default: `"er"`
           (g "conjure#mapping#eval_root_form" :ef)

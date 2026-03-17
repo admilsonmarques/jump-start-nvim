@@ -12,6 +12,7 @@ local function ensure(user, repo)
 end
 ensure("folke", "lazy.nvim")
 ensure("Olical", "nfnl")
+vim.opt["termguicolors"] = true
 do
   local lazy = require("lazy")
   lazy.setup("plugins")

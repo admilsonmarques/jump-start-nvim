@@ -26,7 +26,6 @@
                        :left_mouse_command "buffer %d"
                        :middle_mouse_command nil
                        :indicator {:icon "▎" :style :icon}
-                       :close_icon :X
                        :buffer_close_icon "x"
                        :modified_icon "●"
                        :close_icon ""

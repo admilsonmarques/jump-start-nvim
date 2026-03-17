@@ -13,6 +13,8 @@
 (ensure :folke :lazy.nvim)
 (ensure :Olical :nfnl)
 
+(tset vim.opt :termguicolors true)
+
 (let [lazy (require :lazy)]
   (lazy.setup :plugins))
 

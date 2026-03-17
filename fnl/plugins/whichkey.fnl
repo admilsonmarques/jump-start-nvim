@@ -24,17 +24,18 @@
              :disable {:ft [:TelescopePrompt]
                        :bt [:terminal :help]}})
 
-(local spec [{1 :<leader>q 2 :<CMD>bd<CR> :desc "Quit buffer" :mode :n}
-             {1 :<leader>d :group :Diagnostic}
-             {1 :<leader>f :group :Find}
-             {1 :<leader>g :group :Git}
-             {1 :<leader>h :group :Harpoon}
-             {1 :<leader>r :group :Replace}
-             {1 :<leader>T :group :Themes}
-             {1 :<leader>t :group :Telekasten}
-             {1 :<leader>x :group :Settings}
-             {1 :<leader>z :group :Folds}
-             {1 :<localleader>r :group :Request}
+(local spec [{1 :<leader>q  2 :<CMD>bd<CR> :desc "Quit buffer" :mode :n}
+             {1 :<leader>a  :group "AI"}
+             {1 :<leader>aa :group "AI Context"}
+             {1 :<leader>as :group "AI Server"}
+             {1 :<leader>d  :group :Diagnostic}
+             {1 :<leader>f  :group :Find}
+             {1 :<leader>g  :group :Git}
+             {1 :<leader>h  :group "Git Hunk"}
+             {1 :<leader>r  :group :Replace}
+             {1 :<leader>T  :group :Themes}
+             {1 :<leader>t  :group :Terminal}
+             {1 :<leader>x  :group :Settings}
              {1 :<localleader>x :group :Diagnostics}])
 
 [{1 :folke/which-key.nvim

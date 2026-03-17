@@ -51,13 +51,19 @@
   (gen-term-app :spt ))
 
 
-(local nkeys 
-  [
-   ; {1 :<leader>gg 2 (lazygit) :desc  :Lazygit}
-    ; {1 :<leader>=  2 (spt) :desc :Spotify}
-; {1 :<C-\\> 2 "<cmd>lua require('toggleterm').toggle()<CR>" :desc "Toggle Term" :mode :n}
-   ]
-  )
+(local nkeys
+  [{1 :<leader>tf
+    2 :<cmd>ToggleTerm direction=float<CR>
+    :mode :n
+    :desc "Float Terminal"}
+   {1 :<leader>th
+    2 :<cmd>ToggleTerm direction=horizontal<CR>
+    :mode :n
+    :desc "Horizontal Terminal"}
+   {1 :<leader>tv
+    2 :<cmd>ToggleTerm direction=vertical<CR>
+    :mode :n
+    :desc "Vertical Terminal"}])
 
 (local tkeys 
 [

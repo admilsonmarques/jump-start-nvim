@@ -1,5 +1,6 @@
-(local {: augroup : autocmd : autoload} (require :nfnl.module))
+(local {: autoload} (require :nfnl.module))
 (local core (autoload :nfnl.core))
+(local {: autocmd} (require :config.utils))
 
 
 (local icons (autoload :config.icons))
@@ -136,5 +137,6 @@
   : keys
   :config (fn []
             (let [tree (require :nvim-tree)]
-              (tree.setup opts)))}]
+              (tree.setup opts)
+              (bindings)))}]
 

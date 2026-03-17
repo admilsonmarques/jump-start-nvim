@@ -1,8 +1,8 @@
 (local lsp {:override {:vim.lsp.util.convert_input_to_markdown_lines true
                        :vim.lsp.util.stylize_markdown true
                        :cmp.entry.get_documentation true}
-            :hover {:enabled false}
-            :signature {:enabled false}})
+            :hover {:enabled true}
+            :signature {:enabled true}})
 
 (local presets {:bottom_search true
                 ;-- use a classic bottom cmdline for search
@@ -18,7 +18,7 @@
 
 (local opts {: lsp : presets})
 
-(local keys [{1 :<leader>rn 2 :<CMD>Noice<CR> :mode :n :desc :Notifications}])
+(local keys [{1 :<leader>xn 2 :<CMD>Noice<CR> :mode :n :desc :Notifications}])
 
 [{1 :folke/noice.nvim
   :event :VeryLazy

@@ -1,9 +1,9 @@
 -- [nfnl] fnl/plugins/nvimtree.fnl
 local _local_1_ = require("nfnl.module")
-local augroup = _local_1_.augroup
-local autocmd = _local_1_.autocmd
 local autoload = _local_1_.autoload
 local core = autoload("nfnl.core")
+local _local_2_ = require("config.utils")
+local autocmd = _local_2_.autocmd
 local icons = autoload("config.icons")
 local diagnostics = {enable = true, icons = {hint = core["get-in"](icons.all, {"diagnostics", "BoldHint"}), info = core["get-in"](icons.all, {"diagnostics", "BoldInformation"}), warning = core["get-in"](icons.all, {"diagnostics", "BoldWarning"}), error = core["get-in"](icons.all, {"diagnostics", "BoldError"})}, show_on_dirs = false}
 local update_focused_file = {enable = true, update_cwd = true, ignore_list = {}}
@@ -24,12 +24,13 @@ local function bindings()
   return autocmd("FileType", {desc = "Open folders on NvimTree with 'l' and files as preview (temporary buffer)", pattern = {"NvimTree"}, command = "nnoremap <silent> l <cmd>lua nvim-tree-api.node.navigate.preview()<cr>"})
 end
 local keys = {{"<leader>e", "<cmd>NvimTreeToggle<CR>", mode = "n", desc = "NvimTree"}}
-local function _2_()
+local function _3_()
   local devicons = require("nvim-web-devicons")
   return devicons.setup({})
 end
-local function _3_()
+local function _4_()
   local tree = require("nvim-tree")
-  return tree.setup(opts)
+  tree.setup(opts)
+  return bindings()
 end
-return {{"nvim-tree/nvim-web-devicons", config = _2_}, {"kyazdani42/nvim-tree.lua", version = "*", dependencies = {"nvim-tree/nvim-web-devicons"}, keys = keys, config = _3_, lazy = false}}
+return {{"nvim-tree/nvim-web-devicons", config = _3_}, {"kyazdani42/nvim-tree.lua", version = "*", dependencies = {"nvim-tree/nvim-web-devicons"}, keys = keys, config = _4_, lazy = false}}

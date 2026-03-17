@@ -5,17 +5,17 @@ local opt = _local_1_.opt
 local autocmd = _local_1_.autocmd
 local cider_nrepl_version = "0.57.0"
 local nrepl_version = "1.3.1"
-local function cider_jack_in_cmd(_3fport, _3fprofile)
+local function cider_jack_in_cmd(_3fport, _3fprofiles)
   if (_3fport and (_3fport ~= "")) then
     return ("lein repl :connect " .. _3fport .. "")
   else
     local profile
-    if _3fprofile then
-      profile = "with-profile +unit,+integration,+dev"
+    if _3fprofiles then
+      profile = ("with-profile " .. _3fprofiles)
     else
       profile = ""
     end
-    return ("lein " .. profile .. "  update-in :dependencies conj '[nrepl \"" .. nrepl_version .. "\"]' -- " .. "update-in :plugins conj '[cider/cider-nrepl \"" .. cider_nrepl_version .. "\"]' -- " .. "repl :headless")
+    return ("lein " .. profile .. " update-in :dependencies conj '[nrepl \"" .. nrepl_version .. "\"]' -- " .. "update-in :plugins conj '[cider/cider-nrepl \"" .. cider_nrepl_version .. "\"]' -- " .. "repl :headless")
   end
 end
 local conjure_keys
@@ -31,7 +31,7 @@ local function _4_()
   return vim.schedule(_5_)
 end
 local function _7_()
-  vim.cmd(("!" .. cider_jack_in_cmd(nil, true) .. " &"))
+  vim.cmd(("!" .. cider_jack_in_cmd(nil, "+unit,+integration,+dev") .. " &"))
   vim.cmd("ConjureLogVSplit")
   local function _8_()
     local function _9_()
@@ -40,6 +40,21 @@ local function _7_()
     return vim.defer_fn(_9_, 3000)
   end
   return vim.schedule(_8_)
+end
+local function _flowstorm_()
+  vim.cmd(("!" .. cider_jack_in_cmd(nil, "+storm") .. " &"))
+  vim.cmd("ConjureLogVSplit")
+  local function _fs1_()
+    local function _fs2_()
+      vim.cmd("ConjureConnect")
+      local function _fs3_()
+        return vim.cmd("ConjureEval (do (require '[flow-storm.api :as fs-api]) (fs-api/local-connect))")
+      end
+      return vim.defer_fn(_fs3_, 2000)
+    end
+    return vim.defer_fn(_fs2_, 3000)
+  end
+  return vim.schedule(_fs1_)
 end
 local function _10_()
   local port = vim.fn.input("Enter nREPL port: ")
@@ -67,7 +82,7 @@ local function _15_()
     return nil
   end
 end
-conjure_keys = {{"<localleader>cc", _4_, desc = "Jack-in with CIDER deps and Conjure"}, {"<localleader>c!", _7_, desc = "Jack-in with CIDER with profiles, deps and Conjure"}, {"<localleader>cC", _10_, desc = "Jack-in with CIDER deps on specific port"}, {"gd", "<cmd>ConjureDefWord<CR>", desc = "Go to Definition"}, {"<c-]>", "<cmd>ConjureDefWord<CR>", desc = "Go to Definition"}, {"K", "<cmd>ConjureDocWord<CR>", desc = "Show Documentation"}, {"gD", "<cmd>ConjureCljViewSource<CR>", desc = "View Source"}, {"<localleader>ee", "<cmd>ConjureEval<CR>", desc = "Evaluate Current Form"}, {"<localleader>er", "<cmd>ConjureEvalRootForm<CR>", desc = "Evaluate Root Form"}, {"<localleader>ef", "<cmd>ConjureEvalFile<CR>", desc = "Evaluate File"}, {"<localleader>eb", "<cmd>ConjureEvalBuf<CR>", desc = "Evaluate Buffer"}, {"<localleader>em", "<cmd>ConjureEvalMotion<CR>", desc = "Evaluate Motion"}, {"<localleader>tt", "<cmd>ConjureEvalCurrentTest<CR>", desc = "Test Current"}, {"<localleader>tn", "<cmd>ConjureTestRunNS<CR>", desc = "Test Namespace"}, {"<localleader>ta", "<cmd>ConjureTestRunAll<CR>", desc = "Test All"}, {"<localleader>tr", "<cmd>ConjureTestRefresh<CR>", desc = "Test Refresh"}, {"<localleader>ls", "<cmd>ConjureLogSplit<CR>", desc = "Log Split"}, {"<localleader>lv", "<cmd>ConjureLogVSplit<CR>", desc = "Log VSplit"}, {"<localleader>lt", "<cmd>ConjureLogTab<CR>", desc = "Log Tab"}, {"<localleader>lq", "<cmd>ConjureLogCloseVisible<CR>", desc = "Close Log"}, {"<localleader>lr", "<cmd>ConjureLogResetSoft<CR>", desc = "Log Reset Soft"}, {"<localleader>lR", "<cmd>ConjureLogResetHard<CR>", desc = "Log Reset Hard"}, {"<localleader>cn", "<cmd>ConjureConnect<CR>", desc = "Connect"}, {"<localleader>cd", "<cmd>ConjureDisconnect<CR>", desc = "Disconnect"}, {"<localleader>cs", "<cmd>ConjureStatus<CR>", desc = "Connection Status"}, {"<localleader>sp", _13_, desc = "Search Project"}, {"<localleader>sf", _15_, desc = "Search Files"}}
+conjure_keys = {{"<localleader>cc", _4_, desc = "Jack-in with CIDER deps and Conjure"}, {"<localleader>c!", _7_, desc = "Jack-in with test profiles and Conjure"}, {"<localleader>cF", _flowstorm_, desc = "Jack-in with FlowStorm"}, {"<localleader>cC", _10_, desc = "Jack-in with CIDER deps on specific port"}, {"gd", "<cmd>ConjureDefWord<CR>", desc = "Go to Definition"}, {"<c-]>", "<cmd>ConjureDefWord<CR>", desc = "Go to Definition"}, {"K", "<cmd>ConjureDocWord<CR>", desc = "Show Documentation"}, {"gD", "<cmd>ConjureCljViewSource<CR>", desc = "View Source"}, {"<localleader>ee", "<cmd>ConjureEval<CR>", desc = "Evaluate Current Form"}, {"<localleader>er", "<cmd>ConjureEvalRootForm<CR>", desc = "Evaluate Root Form"}, {"<localleader>ef", "<cmd>ConjureEvalFile<CR>", desc = "Evaluate File"}, {"<localleader>eb", "<cmd>ConjureEvalBuf<CR>", desc = "Evaluate Buffer"}, {"<localleader>em", "<cmd>ConjureEvalMotion<CR>", desc = "Evaluate Motion"}, {"<localleader>tt", "<cmd>ConjureEvalCurrentTest<CR>", desc = "Test Current"}, {"<localleader>tn", "<cmd>ConjureTestRunNS<CR>", desc = "Test Namespace"}, {"<localleader>ta", "<cmd>ConjureTestRunAll<CR>", desc = "Test All"}, {"<localleader>tr", "<cmd>ConjureTestRefresh<CR>", desc = "Test Refresh"}, {"<localleader>ls", "<cmd>ConjureLogSplit<CR>", desc = "Log Split"}, {"<localleader>lv", "<cmd>ConjureLogVSplit<CR>", desc = "Log VSplit"}, {"<localleader>lt", "<cmd>ConjureLogTab<CR>", desc = "Log Tab"}, {"<localleader>lq", "<cmd>ConjureLogCloseVisible<CR>", desc = "Close Log"}, {"<localleader>lr", "<cmd>ConjureLogResetSoft<CR>", desc = "Log Reset Soft"}, {"<localleader>lR", "<cmd>ConjureLogResetHard<CR>", desc = "Log Reset Hard"}, {"<localleader>cn", "<cmd>ConjureConnect<CR>", desc = "Connect"}, {"<localleader>cd", "<cmd>ConjureDisconnect<CR>", desc = "Disconnect"}, {"<localleader>cs", "<cmd>ConjureStatus<CR>", desc = "Connection Status"}, {"<localleader>sp", _13_, desc = "Search Project"}, {"<localleader>sf", _15_, desc = "Search Files"}}
 local conjure_groups = {{"<localleader>e", group = "Evaluate"}, {"<localleader>l", group = "Log"}, {"<localleader>c", group = "Connection"}, {"<localleader>t", group = "Test"}, {"<localleader>s", group = "Search"}}
 local function ensure_repl_connection()
   local conjure_available = pcall(require, "conjure")
@@ -106,7 +121,6 @@ local function _21_()
   g("conjure#client#clojure#nrepl#eval#auto_require", true)
   vim.g["conjure#client#clojure#nrepl#test#current_form_names"] = {"deftest", "defflow", "defspec", "describe"}
   g("conjure#client#clojure#nrepl#test#runner", "clojure")
-  g("conjure#eval#result_register", "e")
   g("conjure#mapping#eval_root_form", "ef")
   g("conjure#mapping#eval_comment_root_form", "e;")
   g("conjure#mapping#eval_file", "el")
