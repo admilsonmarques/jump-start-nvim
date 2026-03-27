@@ -25,7 +25,7 @@
                       :desc "Jack-in with CIDER deps and Conjure"}
                      {1 :<localleader>c!
                       2 (fn []
-                          (vim.cmd (.. "!" (cider-jack-in-cmd nil :+unit,+integration,+dev) " &"))
+                          (vim.cmd (.. "!" (cider-jack-in-cmd nil "+unit,+integration,+dev") " &"))
                           (vim.cmd :ConjureLogVSplit)
                           (vim.schedule (fn []
                                           (vim.defer_fn #(vim.cmd :ConjureConnect)

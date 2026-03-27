@@ -109,6 +109,9 @@ end
 local function gitpush()
   return shell_exec("~/.config/nvim/scripts/gitpush.sh")
 end
+local function macos_notify(title, message)
+  return vim.fn.system(string.format("osascript -e 'display notification \"%s\" with title \"%s\"'", message, title))
+end
 local function noremap(mode, key, command, _3fdesc)
   return keymap(mode, key, command, {silent = true, noremap = true, desc = _3fdesc})
 end
@@ -118,4 +121,4 @@ end
 local function llmap(mode, key, command, desc)
   return keymap(mode, ("<localleader>" .. key), command, {silent = true, desc = desc, noremap = false})
 end
-return {opt = opt, colorscheme = colorscheme, g = g, keymap = keymap, buf_keymap = buf_keymap, augroup = augroup, autocmd = autocmd, ["fmt-autocmd"] = fmt_autocmd, has = has, ["vis-op+"] = vis_op_2b, bkset = bkset, ["on-very-lazy"] = on_very_lazy, ["on-attach"] = on_attach, tx = tx, setup = setup, noremap = noremap, lnoremap = lnoremap, llmap = llmap, ["shell-exec"] = shell_exec, gitpush = gitpush, merge = merge}
+return {opt = opt, colorscheme = colorscheme, g = g, keymap = keymap, buf_keymap = buf_keymap, augroup = augroup, autocmd = autocmd, ["fmt-autocmd"] = fmt_autocmd, has = has, ["vis-op+"] = vis_op_2b, bkset = bkset, ["on-very-lazy"] = on_very_lazy, ["on-attach"] = on_attach, tx = tx, setup = setup, noremap = noremap, lnoremap = lnoremap, llmap = llmap, ["shell-exec"] = shell_exec, gitpush = gitpush, ["macos-notify"] = macos_notify, merge = merge}

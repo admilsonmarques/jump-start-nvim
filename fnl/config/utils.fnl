@@ -88,6 +88,10 @@
 
 (fn gitpush [] (shell-exec "~/.config/nvim/scripts/gitpush.sh"))
 
+(fn macos-notify [title message]
+  (vim.fn.system (string.format "osascript -e 'display notification \"%s\" with title \"%s\"'"
+                                message title)))
+
 ; (fn merge [& maps]
 ;   ;merge n tables into one
 ;   (let [maps maps]
@@ -123,5 +127,6 @@
  : llmap
  : shell-exec
  : gitpush
+ : macos-notify
  : merge}
 
