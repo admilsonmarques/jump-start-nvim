@@ -1,5 +1,6 @@
 (local {: autoload} (require :nfnl.module))
 (local core (autoload :nfnl.core))
+
 (local {: autocmd} (require :config.utils))
 
 
@@ -14,8 +15,6 @@
                 :error (core.get-in icons.all [:diagnostics :BoldError])}})
 
 (local update_focused_file {:enable true :update_cwd true :ignore_list {}})
-
-(local system_open {:cmd nil :args {}})
 
 (local git {:enable true :ignore false :timeout 200})
 
@@ -96,7 +95,6 @@
              :update_cwd true
              : diagnostics
              : update_focused_file
-             : system_open
              : git
              : view
              : renderer

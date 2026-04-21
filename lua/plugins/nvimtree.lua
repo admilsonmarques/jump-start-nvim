@@ -7,7 +7,6 @@ local autocmd = _local_2_.autocmd
 local icons = autoload("config.icons")
 local diagnostics = {enable = true, icons = {hint = core["get-in"](icons.all, {"diagnostics", "BoldHint"}), info = core["get-in"](icons.all, {"diagnostics", "BoldInformation"}), warning = core["get-in"](icons.all, {"diagnostics", "BoldWarning"}), error = core["get-in"](icons.all, {"diagnostics", "BoldError"})}, show_on_dirs = false}
 local update_focused_file = {enable = true, update_cwd = true, ignore_list = {}}
-local system_open = {cmd = nil, args = {}}
 local git = {enable = true, timeout = 200, ignore = false}
 local view = {width = 30, side = "left", adaptive_size = true, signcolumn = "yes", number = false, relativenumber = false}
 local renderer_indent_markers = {enable = true, icons = {corner = "\226\148\148", edge = "\226\148\130", item = "\226\148\130", none = " "}}
@@ -18,7 +17,7 @@ local trash = {cmd = "trash", require_confirm = true}
 local log = {types = {all = false, config = false, copy_paste = false, diagnostics = false, git = false, profile = false}, enable = false, truncate = false}
 local actions_window_picker = {enable = true, chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", exclude = {filetype = {"notify", "packer", "qf", "diff", "fugitive", "fugitiveblame"}, buftype = {"nofile", "terminal", "help"}}}
 local actions = {use_system_clipboard = true, change_dir = {enable = true, global = true, restrict_above_cwd = false}, open_file = {quit_on_open = true, window_picker = actions_window_picker, resize_window = false}}
-local opts = {auto_reload_on_write = true, hijack_directories = {enable = true}, sync_root_with_cwd = true, reload_on_bufenter = true, respect_buf_cwd = true, update_cwd = true, diagnostics = diagnostics, update_focused_file = update_focused_file, system_open = system_open, git = git, view = view, renderer = renderer, filters = filters, trash = trash, log = log, actions = actions}
+local opts = {auto_reload_on_write = true, hijack_directories = {enable = true}, sync_root_with_cwd = true, reload_on_bufenter = true, respect_buf_cwd = true, update_cwd = true, diagnostics = diagnostics, update_focused_file = update_focused_file, git = git, view = view, renderer = renderer, filters = filters, trash = trash, log = log, actions = actions}
 local function bindings()
   autocmd("FileType", {desc = "Close folders on NvimTree with 'h'", pattern = {"NvimTree"}, command = "nnoremap <silent> h <cmd>lua nvim-tree-api.node.navigate.parent_close()<cr>"})
   return autocmd("FileType", {desc = "Open folders on NvimTree with 'l' and files as preview (temporary buffer)", pattern = {"NvimTree"}, command = "nnoremap <silent> l <cmd>lua nvim-tree-api.node.navigate.preview()<cr>"})

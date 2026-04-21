@@ -17,8 +17,7 @@
   :lazy false
   :build ":TSUpdate"
    :config (fn []
-            (let [treesitter (require :nvim-treesitter.configs)]
+            (let [treesitter (require :nvim-treesitter)]
               (treesitter.setup opts))) }
-   {1 :nvim-treesitter/playground }
    {1 :nvim-treesitter/nvim-treesitter-context}
    ]
