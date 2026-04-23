@@ -39,15 +39,15 @@ local function create_keymaps()
 end
 create_commands()
 local function _8_()
-  create_keymaps()
-  local function _9_()
-    if pcall(require, "which-key") then
-      return require("which-key").add({{"<localleader>F", group = "FlowStorm"}})
-    else
-      return nil
-    end
-  end
-  return vim.schedule(_9_)
+  return create_keymaps()
 end
 autocmd("FileType", {pattern = {"clojure", "clj", "cljs", "cljc"}, group = augroup("flowstorm", {clear = true}), desc = "Register FlowStorm keymaps for Clojure buffers", callback = _8_})
+local function _9_()
+  if pcall(require, "which-key") then
+    return require("which-key").add({{"<localleader>F", group = "FlowStorm"}})
+  else
+    return nil
+  end
+end
+vim.schedule(_9_)
 return {}

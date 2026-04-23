@@ -42,7 +42,7 @@
 [{1 :nvim-telescope/telescope-fzf-native.nvim
   :build "make clean && make"}
  {1 :nvim-telescope/telescope.nvim
-  :branch :0.1.x
+  :branch :master
   :lazy false
   :dependencies [:nvim-lua/plenary.nvim
                  :nvim-telescope/telescope-ui-select.nvim
@@ -56,7 +56,16 @@
   : keys
   :config (fn []
             (let [telescope (require :telescope)
-                  themes (require :telescope.themes)]
+                  themes (require :telescope.themes)
+                  pickers (require :telescope.pickers)
+                  state (require :telescope.state)
+                  orig-refresh pickers._Picker.refresh_previewer]
+              ;; Guard against nil layout when picker is closed during a scheduled callback
+              (set pickers._Picker.refresh_previewer
+                   (fn [self]
+                     (let [status (state.get_status self.prompt_bufnr)]
+                       (when status.layout
+                         (orig-refresh self)))))
               (telescope.setup (opts themes))
               (telescope.load_extension :ui-select)
               (telescope.load_extension :emoji)

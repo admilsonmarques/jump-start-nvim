@@ -15,7 +15,7 @@ ensure("Olical", "nfnl")
 vim.opt["termguicolors"] = true
 do
   local lazy = require("lazy")
-  lazy.setup("plugins")
+  lazy.setup("plugins", {rocks = {enabled = false}})
 end
 require("config.options")
 require("config.keymaps")

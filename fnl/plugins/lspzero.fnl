@@ -51,11 +51,6 @@
                                                                                                                       :detail
                                                                                                                       :additionalTextEdits]}}}}}))
               (lsp_zero.on_attach (fn [client bufnr] ; see :help lsp-zero-keybindings ; to learn the available actions
-                                    ;; Disable semantic tokens for better performance if needed
-                                    (when (and client.server_capabilities
-                                               client.server_capabilities.semanticTokensProvider)
-                                      (tset client.server_capabilities
-                                            :semanticTokensProvider nil))
                                     (vim.keymap.set :n :<leader>L
                                                     :<cmd>LspInfo<cr>
                                                     {:desc :LspInfo
@@ -165,7 +160,11 @@
   :config (fn []
             (let [copilot (require :copilot_cmp)]
               (copilot.setup {})))}
- {1 :hrsh7th/nvim-cmp
+{1 :L3MON4D3/LuaSnip
+:version "v2.*"
+:build "make install_jsregexp"
+}
+  { 1 :hrsh7th/nvim-cmp
   :event :InsertEnter
   :dependencies [:L3MON4D3/LuaSnip
                  :hrsh7th/cmp-buffer

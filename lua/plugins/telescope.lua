@@ -10,6 +10,16 @@ local keys = {{"<leader>ff", "<cmd>Telescope find_files theme=dropdown<cr>", mod
 local function _2_()
   local telescope = require("telescope")
   local themes = require("telescope.themes")
+  local pickers = require("telescope.pickers")
+  local state = require("telescope.state")
+  local orig_refresh = pickers._Picker.refresh_previewer
+  -- Guard against nil layout when picker is closed during a scheduled callback
+  pickers._Picker.refresh_previewer = function(self)
+    local status = state.get_status(self.prompt_bufnr)
+    if status.layout then
+      return orig_refresh(self)
+    end
+  end
   telescope.setup(opts(themes))
   telescope.load_extension("ui-select")
   telescope.load_extension("emoji")
@@ -18,4 +28,4 @@ local function _2_()
   telescope.load_extension("live_grep_args")
   return telescope.load_extension("fzf")
 end
-return {{"nvim-telescope/telescope-fzf-native.nvim", build = "make clean && make"}, {"nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = {"nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim", "nvim-telescope/telescope-file-browser.nvim", "nvim-telescope/telescope-live-grep-args.nvim", "nvim-lua/popup.nvim", "ahmedkhalf/project.nvim", "xiyaowong/telescope-emoji.nvim", "nvim-telescope/telescope-fzf-native.nvim", "nvim-telescope/telescope-symbols.nvim"}, keys = keys, config = _2_, lazy = false}}
+return {{"nvim-telescope/telescope-fzf-native.nvim", build = "make clean && make"}, {"nvim-telescope/telescope.nvim", branch = "master", dependencies = {"nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim", "nvim-telescope/telescope-file-browser.nvim", "nvim-telescope/telescope-live-grep-args.nvim", "nvim-lua/popup.nvim", "ahmedkhalf/project.nvim", "xiyaowong/telescope-emoji.nvim", "nvim-telescope/telescope-fzf-native.nvim", "nvim-telescope/telescope-symbols.nvim"}, keys = keys, config = _2_, lazy = false}}

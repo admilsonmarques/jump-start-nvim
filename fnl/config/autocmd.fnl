@@ -52,12 +52,13 @@
          {:pattern [:clojure :clj :cljs :cljc]
           :group (augroup :flowstorm {:clear true})
           :desc "Register FlowStorm keymaps for Clojure buffers"
-          :callback (fn []
-                      (create-keymaps)
-                      (vim.schedule
-                        (fn []
-                          (when (pcall require :which-key)
-                            ((. (require :which-key) :add)
-                             [{1 :<localleader>F :group :FlowStorm}])))))})
+          :callback (fn [] (create-keymaps))})
+
+;; Register FlowStorm which-key group once at startup
+(vim.schedule
+  (fn []
+    (when (pcall require :which-key)
+      ((. (require :which-key) :add)
+       [{1 :<localleader>F :group :FlowStorm}]))))
 
 {}

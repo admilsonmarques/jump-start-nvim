@@ -16,7 +16,7 @@
 (tset vim.opt :termguicolors true)
 
 (let [lazy (require :lazy)]
-  (lazy.setup :plugins))
+  (lazy.setup :plugins {:rocks {:enabled false}}))
 
 (require :config.options)
 (require :config.keymaps)
