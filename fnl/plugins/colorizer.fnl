@@ -1,1 +1,1 @@
-[{1 :norcalli/nvim-colorizer.lua :opts []}]
+; [{1 :norcalli/nvim-colorizer.lua :opts []}]
