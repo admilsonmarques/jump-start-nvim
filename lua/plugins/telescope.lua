@@ -13,13 +13,15 @@ local function _2_()
   local pickers = require("telescope.pickers")
   local state = require("telescope.state")
   local orig_refresh = pickers._Picker.refresh_previewer
-  -- Guard against nil layout when picker is closed during a scheduled callback
-  pickers._Picker.refresh_previewer = function(self)
+  local function _3_(self)
     local status = state.get_status(self.prompt_bufnr)
     if status.layout then
       return orig_refresh(self)
+    else
+      return nil
     end
   end
+  pickers._Picker.refresh_previewer = _3_
   telescope.setup(opts(themes))
   telescope.load_extension("ui-select")
   telescope.load_extension("emoji")

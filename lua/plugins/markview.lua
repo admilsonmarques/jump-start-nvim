@@ -1,0 +1,2 @@
+-- [nfnl] fnl/plugins/markview.fnl
+return {"OXY2DEV/markview.nvim", ft = {"markdown"}, dependencies = {"nvim-tree/nvim-web-devicons", "nvim-treesitter/nvim-treesitter"}, opts = {preview = {icon_provider = "devicons"}, headings = {enable = true, preset = "glow"}, checkboxes = {enable = true, preset = "nerd"}, tables = {enable = true, preset = "rounded"}, code_blocks = {enable = true, style = "block", sign = true}, block_quotes = {enable = true, preset = "obsidian"}, horizontal_rules = {enable = true, preset = "thin"}}}

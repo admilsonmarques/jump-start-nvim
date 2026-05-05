@@ -32,25 +32,25 @@ local function _3_()
   end
   lsp_zero.on_attach(_4_)
   local server_configs = {clojure_lsp = {capabilities = {textDocument = {foldingRange = {formatting = false, rangeFormatting = false}}}}, lua_ls = {settings = {Lua = {runtime = {version = "LuaJIT"}, diagnostics = {globals = {"vim"}}, workspace = {library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false}, telemetry = {enable = false}}}}, ts_ls = {settings = {typescript = {inlayHints = {includeInlayParameterNameHints = "all", includeInlayFunctionParameterTypeHints = true, includeInlayVariableTypeHints = true, includeInlayPropertyDeclarationTypeHints = true, includeInlayFunctionLikeReturnTypeHints = true, includeInlayEnumMemberValueHints = true, includeInlayParameterNameHintsWhenArgumentMatchesName = false}}}}, pyright = {settings = {python = {analysis = {autoSearchPaths = true, useLibraryCodeForTypes = true, diagnosticMode = "workspace"}}}}, yamlls = {settings = {yaml = {schemas = {kubernetes = "*.yaml", ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*", ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}", ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}", ["http://json.schemastore.org/stylelintrc"] = ".stylelintrc.{yml,yaml}", ["http://json.schemastore.org/circle-ci"] = ".circleci/**/*.{yml,yaml}"}}}}}
-  local function _6_(server_name)
+  local function _5_(server_name)
     local lspconfig = require("lspconfig")
     local server_config = server_configs[server_name]
     local final_config = vim.tbl_deep_extend("force", {capabilities = capabilities}, (server_config or {}))
     return lspconfig[server_name].setup(final_config)
   end
-  local function _7_()
+  local function _6_()
     local lua_opts = lsp_zero.nvim_lua_ls()
     local lspconfig = require("lspconfig")
     local enhanced_config = vim.tbl_deep_extend("force", lua_opts, {capabilities = capabilities}, server_configs.lua_ls)
     return lspconfig.lua_ls.setup(enhanced_config)
   end
-  return mason_lspconfig.setup({ensure_installed = {"clojure_lsp", "ts_ls", "fennel_language_server", "lua_ls", "jqls", "yamlls", "pyright", "bashls", "jsonls", "cssls", "html", "marksman"}, handlers = {_6_, lua_ls = _7_}})
+  return mason_lspconfig.setup({ensure_installed = {"clojure_lsp", "ts_ls", "fennel_language_server", "lua_ls", "jqls", "yamlls", "pyright", "bashls", "jsonls", "cssls", "html", "marksman"}, handlers = {_5_, lua_ls = _6_}})
 end
-local function _8_()
+local function _7_()
   local copilot = require("copilot_cmp")
   return copilot.setup({})
 end
-local function _9_()
+local function _8_()
   local lsp_zero = require("lsp-zero")
   local cmp = require("cmp")
   local cmp_action = lsp_zero.cmp_action()
@@ -58,9 +58,9 @@ local function _9_()
   require("luasnip.loaders.from_vscode")
   luasnip.config.setup({})
   lsp_zero.extend_cmp()
-  local function _10_(args)
+  local function _9_(args)
     return luasnip.lsp_expand(args.body)
   end
-  return cmp.setup({formatting = lsp_zero.cmp_format({details = true}), sources = cmp.config.sources({{name = "nvim_lsp", priority = 1000}, {name = "luasnip", priority = 800}, {name = "buffer", priority = 500, keyword_length = 3}, {name = "path", priority = 400}}, {{name = "buffer", keyword_length = 3}}), snippet = {expand = _10_}, window = {completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered()}, mapping = cmp.mapping.preset.insert({["<C-/>"] = cmp.mapping.complete(), ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Insert, select = true}), ["<C-u>"] = cmp.mapping.scroll_docs(-4), ["<C-d>"] = cmp.mapping.scroll_docs(4), ["<C-f>"] = cmp_action.luasnip_jump_forward(), ["<C-b>"] = cmp_action.luasnip_jump_backward(), ["<C-e>"] = cmp.mapping.abort(), ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}), ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert})})})
+  return cmp.setup({formatting = lsp_zero.cmp_format({details = true}), sources = cmp.config.sources({{name = "nvim_lsp", priority = 1000}, {name = "luasnip", priority = 800}, {name = "buffer", priority = 500, keyword_length = 3}, {name = "path", priority = 400}}, {{name = "buffer", keyword_length = 3}}), snippet = {expand = _9_}, window = {completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered()}, mapping = cmp.mapping.preset.insert({["<C-/>"] = cmp.mapping.complete(), ["<CR>"] = cmp.mapping.confirm({behavior = cmp.ConfirmBehavior.Insert, select = true}), ["<C-u>"] = cmp.mapping.scroll_docs(-4), ["<C-d>"] = cmp.mapping.scroll_docs(4), ["<C-f>"] = cmp_action.luasnip_jump_forward(), ["<C-b>"] = cmp_action.luasnip_jump_backward(), ["<C-e>"] = cmp.mapping.abort(), ["<C-n>"] = cmp.mapping.select_next_item({behavior = cmp.SelectBehavior.Insert}), ["<C-p>"] = cmp.mapping.select_prev_item({behavior = cmp.SelectBehavior.Insert})})})
 end
-return {{"VonHeikemen/lsp-zero.nvim", branch = "v3.x", lazy = true, init = _1_, config = false}, {"williamboman/mason.nvim", config = _2_, lazy = false}, {"neovim/nvim-lspconfig", cmd = {"LspInfo", "LspInstall", "LspStart"}, event = {"BufReadPre", "BufNewFile"}, dependencies = {"hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim"}, config = _3_}, {"zbirenbaum/copilot-cmp", config = _8_}, {"L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp"}, {"hrsh7th/nvim-cmp", event = "InsertEnter", dependencies = {"L3MON4D3/LuaSnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua", "zbirenbaum/copilot-cmp", "rafamadriz/friendly-snippets"}, config = _9_}}
+return {{"VonHeikemen/lsp-zero.nvim", branch = "v3.x", lazy = true, init = _1_, config = false}, {"williamboman/mason.nvim", config = _2_, lazy = false}, {"neovim/nvim-lspconfig", cmd = {"LspInfo", "LspInstall", "LspStart"}, event = {"BufReadPre", "BufNewFile"}, dependencies = {"hrsh7th/cmp-nvim-lsp", "williamboman/mason-lspconfig.nvim"}, config = _3_}, {"zbirenbaum/copilot-cmp", config = _7_}, {"L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp"}, {"hrsh7th/nvim-cmp", event = "InsertEnter", dependencies = {"L3MON4D3/LuaSnip", "hrsh7th/cmp-buffer", "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua", "zbirenbaum/copilot-cmp", "rafamadriz/friendly-snippets"}, config = _8_}}
