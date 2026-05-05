@@ -1,2 +1,4 @@
-; [{1 :norcalli/nvim-colorizer.lua :opts []}]
-[]
+[{1 :catgoose/nvim-colorizer.lua
+  :event :BufReadPre
+  :opts {}}]
+

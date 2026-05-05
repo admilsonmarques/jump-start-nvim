@@ -1,2 +1,1 @@
-; [{1 :akinsho/git-conflict.nvim :version "*" :config true}]
-[]
+[{1 :akinsho/git-conflict.nvim :version "*" :config true}]
