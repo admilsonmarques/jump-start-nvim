@@ -1,5 +1,5 @@
 -- [nfnl] fnl/plugins/treesitter.fnl
-local ensure_installed = {"javascript", "typescript", "rust", "scala", "clojure", "fennel", "norg", "bash", "regex"}
+local ensure_installed = {"javascript", "typescript", "rust", "scala", "clojure", "fennel", "bash", "regex", "css", "json", "xml", "yaml", "desktop", "gitignore", "hyprlang"}
 do
   local queries_dir = (vim.fn.stdpath("data") .. "/lazy/nvim-treesitter" .. "/runtime")
   if (1 == vim.fn.isdirectory(queries_dir)) then

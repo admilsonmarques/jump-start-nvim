@@ -1,11 +1,13 @@
 (local ensure_installed
 ;; A list of parser names, or "all".
-;; Languages Neovim already ships a parser AND queries for (`c`, `lua`, `markdown`,
-;; `markdown_inline`, `vimdoc`, `query`, `vim`) are deliberately left out: the grammar
-;; pinned by nvim-treesitter can be older than $VIMRUNTIME's queries, and an installed
-;; parser shadows nvim's own. That mismatch is what produced
-;; `Invalid field name "operator"` on every lua buffer.
-       ["javascript" "typescript" "rust" "scala" "clojure" "fennel" "norg" "bash" "regex"])
+;; Deliberately NOT listed:
+;;  - `c`, `lua`, `markdown`, `markdown_inline`, `vimdoc`: Neovim ships both the parser and the
+;;    queries for them ($VIMRUNTIME). The grammar pinned by nvim-treesitter can be older than those
+;;    queries and an installed parser shadows nvim's own -- that mismatch produced
+;;    `Invalid field name "operator"` on every lua buffer.
+;;  - `norg`: no queries anywhere in nvim-treesitter main, so a parser buys no highlighting.
+       ["javascript" "typescript" "rust" "scala" "clojure" "fennel" "bash" "regex"
+        "css" "json" "xml" "yaml" "desktop" "gitignore" "hyprlang"])
 
 ;; nvim-treesitter (main branch) keeps its query files under `runtime/queries`, but
 ;; lazy.nvim only puts the plugin root on the runtimepath. Without this append, every
