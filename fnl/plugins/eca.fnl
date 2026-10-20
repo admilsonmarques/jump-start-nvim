@@ -7,7 +7,9 @@
         {1 :<leader>at 2 :<cmd>EcaToggle<cr> :desc "ECA Toggle"}
         {1 :<leader>af 2 :<cmd>EcaFocus<cr> :desc "ECA Focus"}
         {1 :<leader>ax 2 :<cmd>EcaClose<cr> :desc "ECA Close"}
-        {1 :<leader>aaf 2 "<cmd>EcaAddFile  .. vim.fn.expand(\"%\") <cr>" :desc "ECA Add File as Context"}
+        {1 :<leader>aaf
+         2 (fn [] (vim.cmd (.. "EcaAddFile " (vim.fn.expand "%"))))
+         :desc "ECA Add File as Context"}
         {1 :<leader>aas 2 :<cmd>EcaAddSelection<cr> :desc "ECA Add Selection as Context"}
         {1 :<leader>ass 2 :<cmd>EcaServerStart<cr> :desc "ECA Server Start"}
         {1 :<leader>asx 2 :<cmd>EcaServerStop<cr> :desc "ECA Server Stop"}

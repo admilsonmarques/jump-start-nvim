@@ -57,14 +57,6 @@
 (fn autocmd [cmd table]
   (vim.api.nvim_create_autocmd cmd table))
 
-(fn fmt-autocmd [{: language : pattern : cmd}]
-  (let [group (augroup (.. language :_formatter) {:clear true})]
-    (autocmd :BufWritePost
-             {: pattern
-              : group
-              :desc (.. "Auto-format " language " files before saving")
-              :callback (vim.cmd (.. "!" cmd " " (vim.api.nvim_buf_get_name 0)))})))
-
 (fn has [plugin]
   (not= (. (. (require :lazy.core.config) :plugins) plugin) nil))
 
@@ -78,19 +70,6 @@
 (fn setup [plugin config]
   (let [plugin (require plugin)]
     (plugin.setup config)))
-
-(fn shell-exec [shell]
-  (let [process (io.popen shell)
-        reader (process:read :*a)]
-    (do
-      (process:close nil)
-      reader)))
-
-(fn gitpush [] (shell-exec "~/.config/nvim/scripts/gitpush.sh"))
-
-(fn macos-notify [title message]
-  (vim.fn.system (string.format "osascript -e 'display notification \"%s\" with title \"%s\"'"
-                                message title)))
 
 ; (fn merge [& maps]
 ;   ;merge n tables into one
@@ -114,7 +93,6 @@
  : buf_keymap
  : augroup
  : autocmd
- : fmt-autocmd
  : has
  : vis-op+
  : bkset
@@ -125,8 +103,5 @@
  : noremap
  : lnoremap
  : llmap
- : shell-exec
- : gitpush
- : macos-notify
  : merge}
 

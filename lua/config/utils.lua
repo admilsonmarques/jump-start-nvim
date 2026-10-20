@@ -74,43 +74,24 @@ end
 local function autocmd(cmd, table)
   return vim.api.nvim_create_autocmd(cmd, table)
 end
-local function fmt_autocmd(_8_)
-  local language = _8_.language
-  local pattern = _8_.pattern
-  local cmd = _8_.cmd
-  local group = augroup((language .. "_formatter"), {clear = true})
-  return autocmd("BufWritePost", {pattern = pattern, group = group, desc = ("Auto-format " .. language .. " files before saving"), callback = vim.cmd(("!" .. cmd .. " " .. vim.api.nvim_buf_get_name(0)))})
-end
 local function has(plugin)
   return (require("lazy.core.config").plugins[plugin] ~= nil)
 end
 local function on_very_lazy(_function)
-  local function _9_()
+  local function _8_()
     return _function()
   end
-  return autocmd("User", {pattern = "VeryLazy", callback = _9_})
+  return autocmd("User", {pattern = "VeryLazy", callback = _8_})
 end
 local function on_attach(on_attach0)
-  local function _10_()
+  local function _9_()
     return on_attach0()
   end
-  return autocmd("LspAttach", {callback = _10_})
+  return autocmd("LspAttach", {callback = _9_})
 end
 local function setup(plugin, config)
   local plugin0 = require(plugin)
   return plugin0.setup(config)
-end
-local function shell_exec(shell)
-  local process = io.popen(shell)
-  local reader = process:read("*a")
-  process:close(nil)
-  return reader
-end
-local function gitpush()
-  return shell_exec("~/.config/nvim/scripts/gitpush.sh")
-end
-local function macos_notify(title, message)
-  return vim.fn.system(string.format("osascript -e 'display notification \"%s\" with title \"%s\"'", message, title))
 end
 local function noremap(mode, key, command, _3fdesc)
   return keymap(mode, key, command, {silent = true, noremap = true, desc = _3fdesc})
@@ -121,4 +102,4 @@ end
 local function llmap(mode, key, command, desc)
   return keymap(mode, ("<localleader>" .. key), command, {silent = true, desc = desc, noremap = false})
 end
-return {opt = opt, colorscheme = colorscheme, g = g, keymap = keymap, buf_keymap = buf_keymap, augroup = augroup, autocmd = autocmd, ["fmt-autocmd"] = fmt_autocmd, has = has, ["vis-op+"] = vis_op_2b, bkset = bkset, ["on-very-lazy"] = on_very_lazy, ["on-attach"] = on_attach, tx = tx, setup = setup, noremap = noremap, lnoremap = lnoremap, llmap = llmap, ["shell-exec"] = shell_exec, gitpush = gitpush, ["macos-notify"] = macos_notify, merge = merge}
+return {opt = opt, colorscheme = colorscheme, g = g, keymap = keymap, buf_keymap = buf_keymap, augroup = augroup, autocmd = autocmd, has = has, ["vis-op+"] = vis_op_2b, bkset = bkset, ["on-very-lazy"] = on_very_lazy, ["on-attach"] = on_attach, tx = tx, setup = setup, noremap = noremap, lnoremap = lnoremap, llmap = llmap, merge = merge}

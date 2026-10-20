@@ -39,10 +39,10 @@
 
 ;; Visual Block ;;
 ;; Move text up and down
-(noremap :x :J ":move '>+1<CR>gv-gv")
-(noremap :x :K ":move '<-2<CR>gv-gv")
-(noremap :x :<C-j> ":move '>+1<CR>gv-gv")
-(noremap :x :<C-k> ":move '<-2<CR>gv-gv")
+(noremap :x :J ":move '>+1<CR>gv=gv")
+(noremap :x :K ":move '<-2<CR>gv=gv")
+(noremap :x :<C-j> ":move '>+1<CR>gv=gv")
+(noremap :x :<C-k> ":move '<-2<CR>gv=gv")
 
 ;; Move text up and down
 (noremap :v :<C-j> ":m .+1<CR>==")

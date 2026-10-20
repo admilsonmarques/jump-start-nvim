@@ -107,11 +107,11 @@
   (autocmd :FileType
            {:desc "Close folders on NvimTree with 'h'"
             :pattern [:NvimTree]
-            :command "nnoremap <silent> h <cmd>lua nvim-tree-api.node.navigate.parent_close()<cr>"})
+            :command "nnoremap <silent> h <cmd>lua require('nvim-tree.api').node.navigate.parent_close()<cr>"})
   (autocmd :FileType
            {:desc "Open folders on NvimTree with 'l' and files as preview (temporary buffer)"
             :pattern [:NvimTree]
-            :command "nnoremap <silent> l <cmd>lua nvim-tree-api.node.navigate.preview()<cr>"}))
+            :command "nnoremap <silent> l <cmd>lua require('nvim-tree.api').node.open.preview()<cr>"}))
 
 (local keys
        [{1 :<leader>e 2 :<cmd>NvimTreeToggle<CR> :mode :n :desc :NvimTree}])

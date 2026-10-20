@@ -39,15 +39,21 @@ local function create_keymaps()
 end
 create_commands()
 local function _8_()
+  vim.opt_local.spell = true
+  vim.opt_local.conceallevel = 2
+  return nil
+end
+autocmd("FileType", {pattern = {"markdown", "markdown.mdx", "text", "gitcommit", "gitrebase", "norg", "tex", "latex", "typst", "rst", "asciidoc"}, group = augroup("prose_options", {clear = true}), desc = "spell + conceal only where they help", callback = _8_})
+local function _9_()
   return create_keymaps()
 end
-autocmd("FileType", {pattern = {"clojure", "clj", "cljs", "cljc"}, group = augroup("flowstorm", {clear = true}), desc = "Register FlowStorm keymaps for Clojure buffers", callback = _8_})
-local function _9_()
+autocmd("FileType", {pattern = {"clojure", "clj", "cljs", "cljc"}, group = augroup("flowstorm", {clear = true}), desc = "Register FlowStorm keymaps for Clojure buffers", callback = _9_})
+local function _10_()
   if pcall(require, "which-key") then
     return require("which-key").add({{"<localleader>F", group = "FlowStorm"}})
   else
     return nil
   end
 end
-vim.schedule(_9_)
+vim.schedule(_10_)
 return {}

@@ -48,6 +48,17 @@
 
 (create-commands)
 
+;; Prose buffers get spell + conceal; code buffers keep conceallevel 0 / spell off.
+;; (Lives here and not in config/init.fnl: that module is never required by init.fnl.)
+(autocmd :FileType
+         {:pattern [:markdown :markdown.mdx :text :gitcommit :gitrebase :norg :tex
+                    :latex :typst :rst :asciidoc]
+          :group (augroup :prose_options {:clear true})
+          :desc "spell + conceal only where they help"
+          :callback (fn []
+                      (set vim.opt_local.spell true)
+                      (set vim.opt_local.conceallevel 2))})
+
 (autocmd :FileType
          {:pattern [:clojure :clj :cljs :cljc]
           :group (augroup :flowstorm {:clear true})

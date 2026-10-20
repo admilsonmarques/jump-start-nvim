@@ -19,25 +19,6 @@
    :group (vim.api.nvim_create_augroup :AutoChecktime {:clear true})
    :callback #(vim.cmd "silent! checktime")})
 
-(fn compare-to-clipboard []
-  (let [ftype (vim.api.nvim_eval "&filetype")]
-    (->
-      "execute 'normal! \"xy'
-      tabnew
-      vsplit
-      enew
-      normal! P
-      setlocal buftype=nowrite
-      set filetype=%s
-      diffthis
-      execute \"normal! \\<C-w>\\<C-w>\"
-      enew
-      set filetype=%s
-      normal! \"xP
-      diffthis"
-      (string.format ftype ftype)
-      vim.cmd)))
-
 (vim.api.nvim_create_autocmd
   :TextYankPost
   {:group (vim.api.nvim_create_augroup :yank_highlight {})
