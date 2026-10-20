@@ -64,3 +64,10 @@
 
 (lnoremap :n :<C-Q> "<cmd>:q<CR>" :Quit)
 (noremap :n "-" "<Cmd>:Explore<cr>")
+
+;; Mouse
+;; `mouse=a` makes a middle click paste register `*` (the PRIMARY selection, i.e.
+;; whatever was last highlighted with the mouse) at the cursor in insert mode,
+;; silently dirtying the buffer. Unbind it in every mode that can paste.
+(each [_ mode (ipairs [:n :i :v :c])]
+  (vim.keymap.set mode :<MiddleMouse> :<Nop> {:silent true}))

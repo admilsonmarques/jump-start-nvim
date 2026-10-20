@@ -37,4 +37,8 @@ noremap("n", "<C-d>", "<c-d>zz", "Move screen down")
 noremap("n", "<C-u>", "<c-u>zz", "Move screen up")
 lnoremap("n", "<C-S-n>", "<cmd>nohlsearch<CR>", "Clear highlights")
 lnoremap("n", "<C-Q>", "<cmd>:q<CR>", "Quit")
-return noremap("n", "-", "<Cmd>:Explore<cr>")
+noremap("n", "-", "<Cmd>:Explore<cr>")
+for _, mode in ipairs({"n", "i", "v", "c"}) do
+  vim.keymap.set(mode, "<MiddleMouse>", "<Nop>", {silent = true})
+end
+return nil
