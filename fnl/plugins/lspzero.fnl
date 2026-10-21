@@ -96,7 +96,11 @@
                                                     {:desc "Buffer Diagnostics (Trouble)"})))
               ;; Enhanced server configurations
               (local server-configs
-                     {:clojure_lsp {:capabilities {:textDocument {:foldingRange {:formatting false
+                     ;; clojure-lsp's bundled OTel SDK tries to export metrics to localhost:4317 on
+                     ;; every boot; with no collector listening it was crash-looping every ~5s and
+                     ;; blew ~/.local/state/nvim/lsp.log up to 1GB. Disable it at the client level.
+                     {:clojure_lsp {:cmd_env {:OTEL_SDK_DISABLED "true"}
+                                    :capabilities {:textDocument {:foldingRange {:formatting false
                                                                                  :rangeFormatting false}}}}
                       :lua_ls {:settings {:Lua {:runtime {:version :LuaJIT}
                                                 :diagnostics {:globals [:vim]}
