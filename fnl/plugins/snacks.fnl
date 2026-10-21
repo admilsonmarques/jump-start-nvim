@@ -12,7 +12,7 @@
                :cmd "gh pr list --state all --json title,number,updatedAt,state,author -L 15 | jq -r 'sort_by(.state, .updatedAt) | reverse | .[0:5] | .[] | (if .state == \"OPEN\" then \" \" else \" \" end) + \" #\" + (.number|tostring) + \" \" + .title + \" @\" + (.author.login[0:5]) + \" (\" + (.updatedAt[0:10]) + \")\"'"
                :action (fn []
                          (let [snacks (require :snacks)]
-                           (snacks.picker.git_prs)))
+                           (snacks.picker.gh_pr)))
                :key :n
                :icon " "
                :height 10}
@@ -70,4 +70,35 @@
         {1 "<leader>;"
          2 (fn []
              (let [snacks (require :snacks)] (snacks.dashboard.open)))
-         :desc "Open Dashboard"}]}
+         :desc "Open Dashboard"}
+        ;; --- Git ---
+        {1 :<leader>gg
+         2 (fn [] (let [snacks (require :snacks)] (snacks.lazygit)))
+         :desc "Lazygit"}
+        {1 :<leader>gS
+         2 (fn [] (let [snacks (require :snacks)] (snacks.picker.git_status)))
+         :desc "Git Status"}
+        {1 :<leader>gL
+         2 (fn [] (let [snacks (require :snacks)] (snacks.picker.git_log)))
+         :desc "Git Log"}
+        {1 :<leader>gB
+         2 (fn [] (let [snacks (require :snacks)] (snacks.picker.git_branches)))
+         :desc "Git Branches"}
+        {1 :<leader>gZ
+         2 (fn [] (let [snacks (require :snacks)] (snacks.picker.git_stash)))
+         :desc "Git Stash"}
+        {1 :<leader>gP
+         2 (fn [] (let [snacks (require :snacks)] (snacks.picker.gh_pr)))
+         :desc "GitHub PRs"}
+        {1 :<leader>gi
+         2 (fn [] (let [snacks (require :snacks)] (snacks.picker.gh_issue)))
+         :desc "GitHub Issues"}
+        {1 :<leader>gy
+         2 (fn []
+             (let [snacks (require :snacks)]
+               (snacks.gitbrowse
+                 {:what :permalink
+                  :open (fn [url]
+                          (vim.fn.setreg "+" url)
+                          (vim.notify (.. "Copiado: " url)))})))
+         :desc "Yank permalink"}]}

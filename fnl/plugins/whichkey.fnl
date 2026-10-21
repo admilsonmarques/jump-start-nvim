@@ -26,8 +26,6 @@
 
 (local spec [{1 :<leader>q  2 :<CMD>bd<CR> :desc "Quit buffer" :mode :n}
              {1 :<leader>a  :group "AI"}
-             {1 :<leader>aa :group "AI Context"}
-             {1 :<leader>as :group "AI Server"}
              {1 :<leader>d  :group :Diagnostic}
              {1 :<leader>f  :group :Find}
              {1 :<leader>g  :group :Git}

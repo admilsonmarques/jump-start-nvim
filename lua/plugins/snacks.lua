@@ -9,7 +9,7 @@ local function dashboard_sections()
   local cmds
   local function _2_()
     local snacks0 = require("snacks")
-    return snacks0.picker.git_prs()
+    return snacks0.picker.gh_pr()
   end
   cmds = {{title = "PRs", cmd = "gh pr list --state all --json title,number,updatedAt,state,author -L 15 | jq -r 'sort_by(.state, .updatedAt) | reverse | .[0:5] | .[] | (if .state == \"OPEN\" then \"\239\144\135 \" else \"\239\144\174 \" end) + \" #\" + (.number|tostring) + \" \" + .title + \" @\" + (.author.login[0:5]) + \" (\" + (.updatedAt[0:10]) + \")\"'", action = _2_, key = "n", icon = "\239\144\135 ", height = 10}, {title = "Git Status", cmd = "git --no-pager diff --stat -B -M -C", height = 10}}
   local function _3_(cmd)
@@ -32,4 +32,40 @@ local function _7_()
   local snacks = require("snacks")
   return snacks.dashboard.open()
 end
-return {"folke/snacks.nvim", priority = 1000, opts = {dashboard = {sections = _4_}, image = {enabled = true, max_width_window_percentage = 60, max_height_window_percentage = 20}, picker = {enabled = true, projects = {dirs = {"~/dev/ade", "~/dev/nu"}}, previewers = {image = {enabled = true, native_2d = true}}}, bigfile = {enabled = true}, indent = {enabled = true}, input = {enabled = false}, notifier = {enabled = false}, words = {enabled = false}}, keys = {{"<leader>ff", _5_, desc = "Find Files"}, {"<leader>fp", _6_, desc = "Projects"}, {"<leader>;", _7_, desc = "Open Dashboard"}}, lazy = false}
+local function _8_()
+  local snacks = require("snacks")
+  return snacks.lazygit()
+end
+local function _9_()
+  local snacks = require("snacks")
+  return snacks.picker.git_status()
+end
+local function _10_()
+  local snacks = require("snacks")
+  return snacks.picker.git_log()
+end
+local function _11_()
+  local snacks = require("snacks")
+  return snacks.picker.git_branches()
+end
+local function _12_()
+  local snacks = require("snacks")
+  return snacks.picker.git_stash()
+end
+local function _13_()
+  local snacks = require("snacks")
+  return snacks.picker.gh_pr()
+end
+local function _14_()
+  local snacks = require("snacks")
+  return snacks.picker.gh_issue()
+end
+local function _15_()
+  local snacks = require("snacks")
+  local function _16_(url)
+    vim.fn.setreg("+", url)
+    return vim.notify(("Copiado: " .. url))
+  end
+  return snacks.gitbrowse({what = "permalink", open = _16_})
+end
+return {"folke/snacks.nvim", priority = 1000, opts = {dashboard = {sections = _4_}, image = {enabled = true, max_width_window_percentage = 60, max_height_window_percentage = 20}, picker = {enabled = true, projects = {dirs = {"~/dev/ade", "~/dev/nu"}}, previewers = {image = {enabled = true, native_2d = true}}}, bigfile = {enabled = true}, indent = {enabled = true}, input = {enabled = false}, notifier = {enabled = false}, words = {enabled = false}}, keys = {{"<leader>ff", _5_, desc = "Find Files"}, {"<leader>fp", _6_, desc = "Projects"}, {"<leader>;", _7_, desc = "Open Dashboard"}, {"<leader>gg", _8_, desc = "Lazygit"}, {"<leader>gS", _9_, desc = "Git Status"}, {"<leader>gL", _10_, desc = "Git Log"}, {"<leader>gB", _11_, desc = "Git Branches"}, {"<leader>gZ", _12_, desc = "Git Stash"}, {"<leader>gP", _13_, desc = "GitHub PRs"}, {"<leader>gi", _14_, desc = "GitHub Issues"}, {"<leader>gy", _15_, desc = "Yank permalink"}}, lazy = false}
