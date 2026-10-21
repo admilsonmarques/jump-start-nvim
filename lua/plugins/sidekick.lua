@@ -52,7 +52,7 @@ local opts
 local function _7_(_)
   return toggle_max()
 end
-opts = {nes = {enabled = false}, cli = {picker = "snacks", watch = true, win = {layout = "right", split = {width = 88}, keys = {fullscreen = {"<M-z>", _7_, mode = {"n", "t"}, desc = "toggle fullscreen"}}}, tools = {claude = {}, hermes = {cmd = {"hermes"}}}}}
+opts = {nes = {enabled = false}, cli = {picker = "snacks", watch = true, win = {layout = "right", split = {width = 88}, keys = {fullscreen = {"<M-z>", _7_, mode = "nt", desc = "toggle fullscreen"}, hide_alt = {"<M-h>", "hide", mode = "nt", desc = "hide the panel"}}}, tools = {claude = {}, hermes = {cmd = {"hermes"}}}}}
 local function toggle(name)
   local cli = require("sidekick.cli")
   return cli.toggle({name = name, focus = true})

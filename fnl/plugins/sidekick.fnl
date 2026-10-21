@@ -46,8 +46,14 @@
                     ;; usable from inside the panel (terminal + normal mode)
                     :keys {:fullscreen {1 :<M-z>
                                         2 (fn [_] (toggle-max))
-                                        :mode [:n :t]
-                                        :desc "toggle fullscreen"}}}
+                                        :mode "nt"
+                                        :desc "toggle fullscreen"}
+                           ;; <C-.> (sidekick default) never arrives inside tmux: TERM=xterm-256color
+                           ;; means kitty stays in legacy encoding, so Ctrl+. is not encodable.
+                           :hide_alt {1 :<M-h>
+                                      2 :hide
+                                      :mode "nt"
+                                      :desc "hide the panel"}}}
               :tools {:claude {}
                       :hermes {:cmd [:hermes]}}}})
 
