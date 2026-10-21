@@ -1,3 +1,5 @@
+(local {: autocmd : augroup} (require :config.utils))
+
 (local ensure_installed
 ;; A list of parser names, or "all".
 ;; Deliberately NOT listed:
@@ -20,20 +22,24 @@
 (local opts {
        : ensure_installed
        :sync_install false
-       :auto_install true
-       :highlight {:enable true
-    ;; Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    ;; Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    ;; Using this option may slow down your editor, and you may see some duplicate highlights.
-    ;; Instead of true it can also be a list of languages
+       :auto_install true})
 
-       :additional_vim_regex_highlighting false}})
+;; nvim-treesitter main dropped the `highlight` setup option -- it's silently ignored.
+;; Highlighting now has to be started explicitly per buffer; pcall swallows the error
+;; for filetypes without an installed parser.
+(fn start-highlight []
+  (pcall vim.treesitter.start))
 
 [{1 :nvim-treesitter/nvim-treesitter
   :lazy false
   :build ":TSUpdate"
    :config (fn []
             (let [treesitter (require :nvim-treesitter)]
-              (treesitter.setup opts))) }
+              (treesitter.setup opts)
+              (autocmd :FileType
+                       {:pattern "*"
+                        :group (augroup :treesitter_highlight {:clear true})
+                        :desc "Start treesitter highlighting when a parser is available"
+                        :callback start-highlight}))) }
    {1 :nvim-treesitter/nvim-treesitter-context}
    ]
