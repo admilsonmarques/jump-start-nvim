@@ -19,23 +19,22 @@
   (when (= 1 (vim.fn.isdirectory queries-dir))
     (vim.opt.runtimepath:append queries-dir)))
 
-(local opts {
-       : ensure_installed
-       :sync_install false
-       :auto_install true})
-
 ;; nvim-treesitter main dropped the `highlight` setup option -- it's silently ignored.
 ;; Highlighting now has to be started explicitly per buffer; pcall swallows the error
 ;; for filetypes without an installed parser.
 (fn start-highlight []
   (pcall vim.treesitter.start))
 
+;; nvim-treesitter main also dropped `ensure_installed`/`auto_install`/`sync_install`
+;; from `setup` -- passing them there is silently ignored too. Parsers now have to be
+;; installed explicitly via `install`.
 [{1 :nvim-treesitter/nvim-treesitter
   :lazy false
   :build ":TSUpdate"
    :config (fn []
             (let [treesitter (require :nvim-treesitter)]
-              (treesitter.setup opts)
+              (treesitter.setup {})
+              (treesitter.install ensure_installed)
               (autocmd :FileType
                        {:pattern "*"
                         :group (augroup :treesitter_highlight {:clear true})

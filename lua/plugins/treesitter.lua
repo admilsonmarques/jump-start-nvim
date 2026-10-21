@@ -10,13 +10,13 @@ do
   else
   end
 end
-local opts = {ensure_installed = ensure_installed, auto_install = true, sync_install = false}
 local function start_highlight()
   return pcall(vim.treesitter.start)
 end
 local function _3_()
   local treesitter = require("nvim-treesitter")
-  treesitter.setup(opts)
+  treesitter.setup({})
+  treesitter.install(ensure_installed)
   return autocmd("FileType", {pattern = "*", group = augroup("treesitter_highlight", {clear = true}), desc = "Start treesitter highlighting when a parser is available", callback = start_highlight})
 end
 return {{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = _3_, lazy = false}, {"nvim-treesitter/nvim-treesitter-context"}}
