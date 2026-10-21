@@ -30,4 +30,4 @@ local function _2_()
   telescope.load_extension("live_grep_args")
   return telescope.load_extension("fzf")
 end
-return {{"nvim-telescope/telescope-fzf-native.nvim", build = "make clean && make"}, {"nvim-telescope/telescope.nvim", branch = "master", dependencies = {"nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim", "nvim-telescope/telescope-file-browser.nvim", "nvim-telescope/telescope-live-grep-args.nvim", "nvim-lua/popup.nvim", "ahmedkhalf/project.nvim", "xiyaowong/telescope-emoji.nvim", "nvim-telescope/telescope-fzf-native.nvim", "nvim-telescope/telescope-symbols.nvim"}, keys = keys, config = _2_, lazy = false}}
+return {{"nvim-telescope/telescope-fzf-native.nvim", build = "make clean && make"}, {"nvim-telescope/telescope.nvim", branch = "master", dependencies = {"nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim", "nvim-telescope/telescope-file-browser.nvim", "nvim-telescope/telescope-live-grep-args.nvim", "nvim-lua/popup.nvim", "ahmedkhalf/project.nvim", "xiyaowong/telescope-emoji.nvim", "nvim-telescope/telescope-fzf-native.nvim", "nvim-telescope/telescope-symbols.nvim"}, keys = keys, config = _2_}}

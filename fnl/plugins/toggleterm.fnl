@@ -35,6 +35,5 @@
 
 [{1 :akinsho/toggleterm.nvim
   :version "*"
-  :lazy false
   :keys keys
   :opts opts}]

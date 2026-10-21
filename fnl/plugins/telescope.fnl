@@ -43,7 +43,6 @@
   :build "make clean && make"}
  {1 :nvim-telescope/telescope.nvim
   :branch :master
-  :lazy false
   :dependencies [:nvim-lua/plenary.nvim
                  :nvim-telescope/telescope-ui-select.nvim
                  :nvim-telescope/telescope-file-browser.nvim

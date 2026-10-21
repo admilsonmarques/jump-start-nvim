@@ -57,17 +57,9 @@
         :notifier {:enabled false}
         :words {:enabled false}}
  ;; Disable this so Noice/Notify can handle msgs}
- :keys [{1 :<leader>ff
-         2 (fn []
-             (let [snacks (require :snacks)]
-               (snacks.picker.files)))
-         :desc "Find Files"}
-        {1 :<leader>fp
-         2 (fn []
-             (let [snacks (require :snacks)]
-               (snacks.picker.projects)))
-         :desc :Projects}
-        {1 "<leader>;"
+ ;; <leader>ff / <leader>fp intentionally not duplicated here -- telescope.fnl
+ ;; owns those (theme=dropdown + project.nvim integration).
+ :keys [{1 "<leader>;"
          2 (fn []
              (let [snacks (require :snacks)] (snacks.dashboard.open)))
          :desc "Open Dashboard"}
