@@ -29,7 +29,7 @@
   :dependencies [:nvim-lua/plenary.nvim
                  :mfussenegger/nvim-dap
                  :nvim-lua/popup.nvim
-                 :hrsh7th/cmp-nvim-lsp]
+                 :saghen/blink.cmp]
   :keys metals-keys
   :config (fn []
             (let [metals (require :metals)
@@ -52,7 +52,8 @@
                                         :-Xmx10G
                                         :-Xms2G]
                      :testUserInterface "Test Explorer"})
-              ((. (require :cmp_nvim_lsp) :default_capabilities))
+              (tset metals-config :capabilities
+                    ((. (require :blink.cmp) :get_lsp_capabilities)))
               (tset metals-config :on_attach
                     (fn [client bufnr]
                       (metals.setup_dap)))

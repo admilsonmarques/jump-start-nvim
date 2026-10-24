@@ -21,11 +21,11 @@
  {1 :neovim/nvim-lspconfig
   :cmd [:LspInfo :LspInstall :LspStart]
   :event [:BufReadPre :BufNewFile]
-  :dependencies [:hrsh7th/cmp-nvim-lsp :williamboman/mason-lspconfig.nvim]
+  :dependencies [:saghen/blink.cmp :williamboman/mason-lspconfig.nvim]
   :config (fn [] ; This is where all the LSP shenanigans will live
             (let [lsp_zero (require :lsp-zero)
                   mason_lspconfig (require :mason-lspconfig)
-                  cmp_nvim_lsp (require :cmp_nvim_lsp)]
+                  blink_cmp (require :blink.cmp)]
               (lsp_zero.extend_lspconfig)
               ;; Enhanced diagnostic configuration
               (vim.diagnostic.config {:virtual_text {:spacing 4
@@ -43,7 +43,7 @@
               (local capabilities
                      (vim.tbl_deep_extend :force
                                           (vim.lsp.protocol.make_client_capabilities)
-                                          (cmp_nvim_lsp.default_capabilities)
+                                          (blink_cmp.get_lsp_capabilities)
                                           {:textDocument {:foldingRange {:dynamicRegistration false
                                                                          :lineFoldingOnly true}
                                                           :completion {:completionItem {:snippetSupport true
@@ -160,56 +160,38 @@
                                                                                                          :lua_ls))]
                                                              (lspconfig.lua_ls.setup enhanced-config)))}})))}
  ;; Autocompletion
- {1 :zbirenbaum/copilot-cmp
+ {1 :L3MON4D3/LuaSnip
+  :version "v2.*"
+  :build "make install_jsregexp"
+  :dependencies [:rafamadriz/friendly-snippets]
   :config (fn []
-            (let [copilot (require :copilot_cmp)]
-              (copilot.setup {})))}
-{1 :L3MON4D3/LuaSnip
-:version "v2.*"
-:build "make install_jsregexp"
-}
-  { 1 :hrsh7th/nvim-cmp
+            (let [luasnip (require :luasnip)]
+              ((. (require :luasnip.loaders.from_vscode) :lazy_load))
+              (luasnip.config.setup {})))}
+ {1 :saghen/blink.cmp
+  :version "*"
   :event :InsertEnter
   :dependencies [:L3MON4D3/LuaSnip
-                 :hrsh7th/cmp-buffer
-                 :hrsh7th/cmp-path
-                 :saadparwaiz1/cmp_luasnip
-                 :hrsh7th/cmp-nvim-lsp
-                 :hrsh7th/cmp-nvim-lua
-                 :zbirenbaum/copilot-cmp
-                 :rafamadriz/friendly-snippets]
+                 :rafamadriz/friendly-snippets
+                 :giuxtaposition/blink-cmp-copilot]
   :config (fn [] ; Here is where you configure the autocompletion settings
-            (let [lsp_zero (require :lsp-zero)
-                  cmp (require :cmp)
-                  cmp_action (lsp_zero.cmp_action)
-                  luasnip (require :luasnip)]
-              ;; Load friendly snippets
-              (require :luasnip.loaders.from_vscode)
-              (luasnip.config.setup {})
-              (lsp_zero.extend_cmp)
-              (cmp.setup {:formatting (lsp_zero.cmp_format {:details true})
-                          :sources (cmp.config.sources [{:name :nvim_lsp
-                                                         :priority 1000}
-                                                        {:name :luasnip
-                                                         :priority 800}
-                                                        {:name :buffer
-                                                         :priority 500
-                                                         :keyword_length 3}
-                                                        {:name :path
-                                                         :priority 400}]
-                                                       [{:name :buffer
-                                                         :keyword_length 3}])
-                          :snippet {:expand (fn [args]
-                                              (luasnip.lsp_expand args.body))}
-                          :window {:completion (cmp.config.window.bordered)
-                                   :documentation (cmp.config.window.bordered)}
-                          :mapping (cmp.mapping.preset.insert {:<C-/> (cmp.mapping.complete)
-                                                               :<CR> (cmp.mapping.confirm {:behavior cmp.ConfirmBehavior.Insert
-                                                                                           :select true})
-                                                               :<C-u> (cmp.mapping.scroll_docs -4)
-                                                               :<C-d> (cmp.mapping.scroll_docs 4)
-                                                               :<C-f> (cmp_action.luasnip_jump_forward)
-                                                               :<C-b> (cmp_action.luasnip_jump_backward)
-                                                               :<C-e> (cmp.mapping.abort)
-                                                               :<C-n> (cmp.mapping.select_next_item {:behavior cmp.SelectBehavior.Insert})
-                                                               :<C-p> (cmp.mapping.select_prev_item {:behavior cmp.SelectBehavior.Insert})})})))}]
+            (let [blink (require :blink.cmp)]
+              (blink.setup {:snippets {:preset :luasnip}
+                            :keymap {:preset :none
+                                     :<C-/> [:show :show_documentation :hide_documentation]
+                                     :<CR> [:accept :fallback]
+                                     :<C-u> [:scroll_documentation_up :fallback]
+                                     :<C-d> [:scroll_documentation_down :fallback]
+                                     :<C-f> [:snippet_forward :fallback]
+                                     :<C-b> [:snippet_backward :fallback]
+                                     :<C-e> [:cancel :fallback]
+                                     :<C-n> [:select_next :fallback]
+                                     :<C-p> [:select_prev :fallback]}
+                            :completion {:documentation {:auto_show true}
+                                         :menu {:border :rounded}
+                                         :ghost_text {:enabled false}}
+                            :sources {:default [:lsp :path :snippets :buffer :copilot]
+                                      :providers {:copilot {:name :copilot
+                                                            :module :blink-cmp-copilot
+                                                            :score_offset 100
+                                                            :async true}}}})))}]

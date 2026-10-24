@@ -32,7 +32,7 @@ local function _4_()
   metals_config["handlers"] = {["metals/status"] = status_handler}
   metals_config.init_options["statusBarProvider"] = "on"
   metals_config["settings"] = {showImplicitArguments = true, showImplicitConversionsAndClasses = true, showInferredType = true, serverVersion = "latest.snapshot", scalafixRulesDependencies = {"com.github.liancheng/scalafix-rules-dotty:0.1.6"}, serverProperties = {"-XX:+UseStringDeduplication", "-XX:MaxInlineLevel=20", "-XX:+UseParallelGC", "-Xmx10G", "-Xms2G"}, testUserInterface = "Test Explorer", enableSemanticHighlighting = false}
-  require("cmp_nvim_lsp").default_capabilities()
+  metals_config["capabilities"] = require("blink.cmp").get_lsp_capabilities()
   local function _5_(client, bufnr)
     return metals.setup_dap()
   end
@@ -51,4 +51,4 @@ local function _4_()
   end
   return vim.schedule(_7_)
 end
-return {{"scalameta/nvim-metals", dependencies = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-lua/popup.nvim", "hrsh7th/cmp-nvim-lsp"}, keys = metals_keys, config = _4_}}
+return {{"scalameta/nvim-metals", dependencies = {"nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", "nvim-lua/popup.nvim", "saghen/blink.cmp"}, keys = metals_keys, config = _4_}}
