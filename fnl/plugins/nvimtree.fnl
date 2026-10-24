@@ -111,7 +111,7 @@
   (autocmd :FileType
            {:desc "Open folders on NvimTree with 'l' and files as preview (temporary buffer)"
             :pattern [:NvimTree]
-            :command "nnoremap <silent> l <cmd>lua require('nvim-tree.api').node.open.preview()<cr>"}))
+            :command "nnoremap <silent> l <cmd>lua require('nvim-tree.api').node.open.preview({focus = false})<cr>"}))
 
 (local keys
        [{1 :<leader>e 2 :<cmd>NvimTreeToggle<CR> :mode :n :desc :NvimTree}])

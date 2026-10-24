@@ -20,7 +20,7 @@ local actions = {use_system_clipboard = true, change_dir = {enable = true, globa
 local opts = {auto_reload_on_write = true, hijack_directories = {enable = true}, sync_root_with_cwd = true, reload_on_bufenter = true, respect_buf_cwd = true, update_cwd = true, diagnostics = diagnostics, update_focused_file = update_focused_file, git = git, view = view, renderer = renderer, filters = filters, trash = trash, log = log, actions = actions}
 local function bindings()
   autocmd("FileType", {desc = "Close folders on NvimTree with 'h'", pattern = {"NvimTree"}, command = "nnoremap <silent> h <cmd>lua require('nvim-tree.api').node.navigate.parent_close()<cr>"})
-  return autocmd("FileType", {desc = "Open folders on NvimTree with 'l' and files as preview (temporary buffer)", pattern = {"NvimTree"}, command = "nnoremap <silent> l <cmd>lua require('nvim-tree.api').node.open.preview()<cr>"})
+  return autocmd("FileType", {desc = "Open folders on NvimTree with 'l' and files as preview (temporary buffer)", pattern = {"NvimTree"}, command = "nnoremap <silent> l <cmd>lua require('nvim-tree.api').node.open.preview({focus = false})<cr>"})
 end
 local keys = {{"<leader>e", "<cmd>NvimTreeToggle<CR>", mode = "n", desc = "NvimTree"}}
 local function _3_()
