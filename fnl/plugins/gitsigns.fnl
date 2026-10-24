@@ -14,23 +14,23 @@
          :mode :n
          :desc "Prev Hunk"}
         {1 :<leader>hs
-         2 :<cmd>Gitsigns stage_hunk<CR>
+         2 "<cmd>Gitsigns stage_hunk<CR>"
          :mode [:n :v]
          :desc "Stage Hunk"}
         {1 :<leader>hr
-         2 :<cmd>Gitsigns reset_hunk<CR>
+         2 "<cmd>Gitsigns reset_hunk<CR>"
          :mode [:n :v]
          :desc "Reset Hunk"}
         {1 :<leader>hp
-         2 :<cmd>Gitsigns preview_hunk<CR>
+         2 "<cmd>Gitsigns preview_hunk<CR>"
          :mode :n
          :desc "Preview Hunk"}
         {1 :<leader>hb
-         2 :<cmd>Gitsigns blame_line<CR>
+         2 "<cmd>Gitsigns blame_line<CR>"
          :mode :n
          :desc "Blame Line"}
         {1 :<leader>hd
-         2 :<cmd>Gitsigns diffthis<CR>
+         2 "<cmd>Gitsigns diffthis<CR>"
          :mode :n
          :desc "Diff This"}])
 
