@@ -20,4 +20,5 @@ end
 require("config.options")
 require("config.keymaps")
 require("config.autocmd")
+require("config.init")
 return require("config.themes")

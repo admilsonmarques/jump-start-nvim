@@ -10,9 +10,9 @@ vim.o.autoread = true
 local function _3_()
   return vim.cmd("silent! checktime")
 end
-vim.api.nvim_create_autocmd("FocusGained,BufEnter,CursorHold", {pattern = "*", group = vim.api.nvim_create_augroup("AutoChecktime", {clear = true}), callback = _3_})
+vim.api.nvim_create_autocmd({"FocusGained", "BufEnter", "CursorHold"}, {pattern = "*", group = vim.api.nvim_create_augroup("AutoChecktime", {clear = true}), callback = _3_})
 local function _4_()
-  return vim.highlight.on_yank({higroup = "IncSearch", timeout = 300})
+  return vim.hl.on_yank({higroup = "IncSearch", timeout = 300})
 end
 vim.api.nvim_create_autocmd("TextYankPost", {group = vim.api.nvim_create_augroup("yank_highlight", {}), pattern = "*", callback = _4_})
 return {}

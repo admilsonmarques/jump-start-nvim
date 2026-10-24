@@ -14,7 +14,7 @@
 ;; handy setting to update opened files after switching branch
 (set vim.o.autoread true)
 (vim.api.nvim_create_autocmd
-  "FocusGained,BufEnter,CursorHold"
+  [:FocusGained :BufEnter :CursorHold]
   {:pattern "*"
    :group (vim.api.nvim_create_augroup :AutoChecktime {:clear true})
    :callback #(vim.cmd "silent! checktime")})
@@ -24,6 +24,6 @@
   {:group (vim.api.nvim_create_augroup :yank_highlight {})
    :pattern :*
    :callback
-   (fn [] (vim.highlight.on_yank {:higroup :IncSearch :timeout 300}))})
+   (fn [] (vim.hl.on_yank {:higroup :IncSearch :timeout 300}))})
 
 {}
