@@ -16,7 +16,11 @@
    :close_on_exit true})
 
 (local keys
-  [{1 :<leader>tf
+  [{1 :<C-\>
+    2 "<cmd>ToggleTerm direction=float<CR>"
+    :mode [:n :t]
+    :desc "Toggle Float Terminal"}
+   {1 :<leader>tf
     2 "<cmd>ToggleTerm direction=float<CR>"
     :mode :n
     :desc "Float Terminal"}
