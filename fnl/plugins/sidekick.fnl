@@ -54,7 +54,7 @@
                                       2 :hide
                                       :mode "nt"
                                       :desc "hide the panel"}}}
-              :tools {:claude {}
+              :tools {:claude {:cmd [:claude "--dangerously-skip-permissions"]}
                       :hermes {:cmd [:hermes]}}}})
 
 (fn toggle [name]
