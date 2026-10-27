@@ -186,10 +186,17 @@
                                      :<C-b> [:snippet_backward :fallback]
                                      :<C-e> [:cancel :fallback]
                                      :<C-n> [:select_next :fallback]
-                                     :<C-p> [:select_prev :fallback]}
+                                     :<C-p> [:select_prev :fallback]
+                                     :<C-j> [:select_next :fallback]
+                                     :<C-k> [:select_prev :fallback]}
                             :completion {:documentation {:auto_show true}
                                          :menu {:border :rounded}
-                                         :ghost_text {:enabled false}}
+                                         :ghost_text {:enabled false}
+                                         ;; don't preselect the first item: <CR> should
+                                         ;; only accept a suggestion you actually
+                                         ;; navigated to with <C-n>/<C-p>, otherwise it
+                                         ;; just inserts a newline like you'd expect
+                                         :list {:selection {:preselect false}}}
                             :sources {:default [:lsp :path :snippets :buffer :copilot]
                                       :providers {:copilot {:name :copilot
                                                             :module :blink-cmp-copilot
