@@ -178,23 +178,20 @@
             (let [blink (require :blink.cmp)]
               (blink.setup {:snippets {:preset :luasnip}
                             :keymap {:preset :none
-                                     :<C-/> [:show :show_documentation :hide_documentation]
                                      :<CR> [:accept :fallback]
-                                     :<C-u> [:scroll_documentation_up :fallback]
-                                     :<C-d> [:scroll_documentation_down :fallback]
+                                     :<C-j> [:scroll_documentation_down :fallback]
+                                     :<C-k> [:scroll_documentation_up :fallback]
                                      :<C-f> [:snippet_forward :fallback]
                                      :<C-b> [:snippet_backward :fallback]
                                      :<C-e> [:cancel :fallback]
-                                     :<C-n> [:select_next :fallback]
-                                     :<C-p> [:select_prev :fallback]
-                                     :<C-j> [:select_next :fallback]
-                                     :<C-k> [:select_prev :fallback]}
+                                     :<Tab> [:select_next :fallback]
+                                     :<S-Tab> [:select_prev :fallback]}
                             :completion {:documentation {:auto_show true}
                                          :menu {:border :rounded}
                                          :ghost_text {:enabled false}
                                          ;; don't preselect the first item: <CR> should
                                          ;; only accept a suggestion you actually
-                                         ;; navigated to with <C-n>/<C-p>, otherwise it
+                                         ;; navigated to with <Tab>/<S-Tab>, otherwise it
                                          ;; just inserts a newline like you'd expect
                                          :list {:selection {:preselect false}}}
                             :sources {:default [:lsp :path :snippets :buffer :copilot]
