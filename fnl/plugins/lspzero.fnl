@@ -179,19 +179,19 @@
               (blink.setup {:snippets {:preset :luasnip}
                             :keymap {:preset :none
                                      :<CR> [:accept :fallback]
+                                     :<Up> [:select_prev :fallback]
+                                     :<Down> [:select_next :fallback]
                                      :<C-j> [:scroll_documentation_down :fallback]
                                      :<C-k> [:scroll_documentation_up :fallback]
                                      :<C-f> [:snippet_forward :fallback]
                                      :<C-b> [:snippet_backward :fallback]
-                                     :<C-e> [:cancel :fallback]
-                                     :<Tab> [:select_next :fallback]
-                                     :<S-Tab> [:select_prev :fallback]}
+                                     :<C-e> [:cancel :fallback]}
                             :completion {:documentation {:auto_show true}
                                          :menu {:border :rounded}
                                          :ghost_text {:enabled false}
                                          ;; don't preselect the first item: <CR> should
                                          ;; only accept a suggestion you actually
-                                         ;; navigated to with <Tab>/<S-Tab>, otherwise it
+                                         ;; navigated to with <Up>/<Down>, otherwise it
                                          ;; just inserts a newline like you'd expect
                                          :list {:selection {:preselect false}}}
                             :sources {:default [:lsp :path :snippets :buffer :copilot]
