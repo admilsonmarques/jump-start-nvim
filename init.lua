@@ -13,9 +13,10 @@ end
 ensure("folke", "lazy.nvim")
 ensure("Olical", "nfnl")
 vim.opt["termguicolors"] = true
+vim.o.background = "dark"
 do
   local lazy = require("lazy")
-  lazy.setup("plugins", {rocks = {enabled = false}})
+  lazy.setup("plugins", {rocks = {enabled = false}, checker = {enabled = true, notify = false}})
 end
 require("config.options")
 require("config.keymaps")

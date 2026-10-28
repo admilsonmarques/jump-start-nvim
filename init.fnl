@@ -14,9 +14,11 @@
 (ensure :Olical :nfnl)
 
 (tset vim.opt :termguicolors true)
+(set vim.o.background :dark)
 
 (let [lazy (require :lazy)]
-  (lazy.setup :plugins {:rocks {:enabled false}}))
+  (lazy.setup :plugins {:rocks {:enabled false}
+                        :checker {:enabled true :notify false}}))
 
 (require :config.options)
 (require :config.keymaps)
