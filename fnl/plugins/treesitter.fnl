@@ -21,9 +21,12 @@
 
 ;; nvim-treesitter main dropped the `highlight` setup option -- it's silently ignored.
 ;; Highlighting now has to be started explicitly per buffer; pcall swallows the error
-;; for filetypes without an installed parser.
+;; for filetypes without an installed parser. On a freshly installed parser the first
+;; `FileType` firing can race the parser becoming available, so retry once on a defer
+;; instead of leaving the buffer unhighlighted until a manual `:lua vim.treesitter.start()`.
 (fn start-highlight []
-  (pcall vim.treesitter.start))
+  (when (not (pcall vim.treesitter.start))
+    (vim.defer_fn (fn [] (pcall vim.treesitter.start)) 200)))
 
 ;; nvim-treesitter main also dropped `ensure_installed`/`auto_install`/`sync_install`
 ;; from `setup` -- passing them there is silently ignored too. Parsers now have to be

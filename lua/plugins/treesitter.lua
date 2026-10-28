@@ -11,7 +11,11 @@ do
   end
 end
 local function start_highlight()
-  return pcall(vim.treesitter.start)
+  if not pcall(vim.treesitter.start) then
+    vim.defer_fn(function()
+      pcall(vim.treesitter.start)
+    end, 200)
+  end
 end
 local function _3_()
   local treesitter = require("nvim-treesitter")
