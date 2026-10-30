@@ -61,7 +61,16 @@
           :callback (fn []
                       (set vim.opt_local.spell true)
                       (set vim.opt_local.spelllang "pt,en")
-                      (set vim.opt_local.conceallevel 2))})
+                      (set vim.opt_local.conceallevel 2)
+                      ;; prose reads better wrapped; the global config keeps
+                      ;; wrap=false for code. linebreak breaks at words, not
+                      ;; mid-word; breakindent would indent the continuation.
+                      (set vim.opt_local.wrap true)
+                      (set vim.opt_local.linebreak true)
+                      ;; floating preview of the [[link]] under the cursor
+                      (when (= vim.bo.filetype :markdown)
+                        (let [(ok? lp) (pcall require :config.link_preview)]
+                          (when ok? (lp.attach (vim.api.nvim_get_current_buf))))))})
 
 (autocmd :FileType
          {:pattern [:clojure :clj :cljs :cljc]

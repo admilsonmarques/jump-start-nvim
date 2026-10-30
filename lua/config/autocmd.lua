@@ -42,19 +42,30 @@ local function _8_()
   vim.opt_local.spell = true
   vim.opt_local.spelllang = "pt,en"
   vim.opt_local.conceallevel = 2
-  return nil
+  vim.opt_local.wrap = true
+  vim.opt_local.linebreak = true
+  if (vim.bo.filetype == "markdown") then
+    local ok_3f, lp = pcall(require, "config.link_preview")
+    if ok_3f then
+      return lp.attach(vim.api.nvim_get_current_buf())
+    else
+      return nil
+    end
+  else
+    return nil
+  end
 end
 autocmd("FileType", {pattern = {"markdown", "markdown.mdx", "text", "gitcommit", "gitrebase", "norg", "tex", "latex", "typst", "rst", "asciidoc"}, group = augroup("prose_options", {clear = true}), desc = "spell + conceal only where they help", callback = _8_})
-local function _9_()
+local function _11_()
   return create_keymaps()
 end
-autocmd("FileType", {pattern = {"clojure", "clj", "cljs", "cljc"}, group = augroup("flowstorm", {clear = true}), desc = "Register FlowStorm keymaps for Clojure buffers", callback = _9_})
-local function _10_()
+autocmd("FileType", {pattern = {"clojure", "clj", "cljs", "cljc"}, group = augroup("flowstorm", {clear = true}), desc = "Register FlowStorm keymaps for Clojure buffers", callback = _11_})
+local function _12_()
   if pcall(require, "which-key") then
     return require("which-key").add({{"<localleader>F", group = "FlowStorm"}})
   else
     return nil
   end
 end
-vim.schedule(_10_)
+vim.schedule(_12_)
 return {}
