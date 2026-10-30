@@ -104,6 +104,18 @@ local function open_float(lines, title, focus)
   vim.wo[win].wrap = true
   vim.wo[win].linebreak = true
 
+  -- markview attaches on BufEnter/WinEnter; a peek float opened with focus=false
+  -- never fires either, so it has to be rendered explicitly (the documented
+  -- strict path: markview.render(buffer)). Without this the peek shows raw
+  -- markdown/YAML while the focused `K` preview looks rendered.
+  vim.schedule(function()
+    if vim.api.nvim_buf_is_valid(buf) then
+      pcall(function()
+        require("markview").render(buf)
+      end)
+    end
+  end)
+
   -- close on q/<Esc>; a non-focused peek also closes as soon as the cursor moves
   for _, lhs in ipairs({ "q", "<Esc>" }) do
     vim.keymap.set("n", lhs, function()
