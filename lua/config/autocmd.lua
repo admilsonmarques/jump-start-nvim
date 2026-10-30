@@ -40,6 +40,7 @@ end
 create_commands()
 local function _8_()
   vim.opt_local.spell = true
+  vim.opt_local.spelllang = "pt,en"
   vim.opt_local.conceallevel = 2
   return nil
 end

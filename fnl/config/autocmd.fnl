@@ -50,6 +50,9 @@
 
 ;; Prose buffers get spell + conceal; code buffers keep conceallevel 0 / spell off.
 ;; (Lives here and not in config/init.fnl: that module is never required by init.fnl.)
+;; spelllang: the default "en" flagged ~88% of the words in this vault's notes
+;; (all Portuguese); "pt,en" leaves ~4% (proper nouns + frontmatter keys).
+;; Requires the pt spell files in ~/.local/share/nvim/site/spell/.
 (autocmd :FileType
          {:pattern [:markdown :markdown.mdx :text :gitcommit :gitrebase :norg :tex
                     :latex :typst :rst :asciidoc]
@@ -57,6 +60,7 @@
           :desc "spell + conceal only where they help"
           :callback (fn []
                       (set vim.opt_local.spell true)
+                      (set vim.opt_local.spelllang "pt,en")
                       (set vim.opt_local.conceallevel 2))})
 
 (autocmd :FileType
