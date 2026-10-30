@@ -68,19 +68,13 @@ local function link_at_cursor()
   return { raw = (ref and ref.raw) or link, target = (ref and ref.target) or link, kind = kind }
 end
 
----Note body without the frontmatter block.
+---Note lines for the preview: the whole file, frontmatter included — markview's
+---`yaml` renderer turns it into the property block with icons, same as in the
+---note itself.
 ---@param path string
 ---@return string[]
 local function note_lines(path)
-  local lines = vim.fn.readfile(path, "", 600)
-  if lines[1] == "---" then
-    for i = 2, math.min(#lines, 200) do
-      if lines[i] == "---" then
-        return vim.list_slice(lines, i + 1)
-      end
-    end
-  end
-  return lines
+  return vim.fn.readfile(path, "", 600)
 end
 
 ---@param focus boolean enter the float (markview renders on attach either way)
