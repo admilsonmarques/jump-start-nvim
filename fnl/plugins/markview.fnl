@@ -16,4 +16,11 @@
                                   :INFOBOX {:preview "󰋽 Infobox"
                                             :hl "MarkviewBlockQuoteNote"
                                             :icon "󰋽"
-                                            :line_hl "MarkviewPalette5"}}}}}
+                                            :line_hl "MarkviewPalette5"}
+                                  ;; spoken dialogue (`> [!speech]`): green tint so
+                                  ;; it reads apart from infobox, quote glyph from
+                                  ;; markview's own QUOTE callout
+                                  :SPEECH {:preview "󱆨 Speech"
+                                           :hl "MarkviewBlockQuoteNote"
+                                           :icon "󱆨"
+                                           :line_hl "MarkviewPalette4"}}}}}
